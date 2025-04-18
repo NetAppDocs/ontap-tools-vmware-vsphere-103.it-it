@@ -1,0 +1,28 @@
+---
+permalink: manage/migrate-standard-virtual-machines-to-vvols-datastores.html 
+sidebar: sidebar 
+keywords: Migrate NFS and VMFS virtual machines 
+summary: 'È possibile eseguire la migrazione di macchine virtuali da datastore NFS e VMFS a datastore volumi virtuali \(vVol\) per sfruttare la gestione di macchine virtuali basata su policy e altre funzionalità vVol. I datastore vVol consentono di soddisfare requisiti di carichi di lavoro superiori.' 
+---
+= Migrazione di macchine virtuali con datastore NFS e VMFS in datastore vVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile migrare le macchine virtuali dai datastore NFS e VMFS ai datastore Virtual Volumes (vVol), per sfruttare la gestione delle macchine virtuali basata su policy e altre funzionalità vVol. I datastore vVol ti consentono di soddisfare i requisiti maggiori dei carichi di lavoro.
+
+.Prima di iniziare
+Assicurarsi che il provider VASA non sia in esecuzione su nessuna delle macchine virtuali che si intende migrare. Se si esegue la migrazione di una macchina virtuale che esegue VASA Provider in un datastore vVols, non è possibile eseguire alcuna operazione di gestione, inclusa l'accensione delle macchine virtuali presenti negli archivi dati vVols.
+
+*A proposito di questa attività*
+
+Quando esegui la migrazione da un datastore NFS e VMFS a un datastore vVol, vCenter Server utilizza le API vStorage per l'integrazione degli array (VAAI) per eseguire l'offload del carico durante lo spostamento dei dati dai datastore VMFS, ma non da un file NFS VMDK. Gli offload VAAI riducono normalmente il carico sull'host.
+
+.Fasi
+. Fare clic con il pulsante destro del mouse sulla macchina virtuale da migrare e selezionare *Migra*.
+. Selezionare *Cambia solo memoria*, quindi selezionare *Avanti*.
+. Seleziona un formato di dischi virtuali, una policy storage delle macchine virtuali e un datastore vVol corrispondente alle funzionalità del datastore che stai migrando.
+. Controllare le impostazioni e selezionare *fine*.
+

@@ -1,0 +1,110 @@
+---
+permalink: configure/configure-esx-server-multipath-and-timeout-settings.html 
+sidebar: sidebar 
+keywords:  
+summary: 'I tool ONTAP per VMware vSphere controllano e impostano le impostazioni di multipathing dell"host ESXi e le impostazioni di timeout degli HBA più adatte ai sistemi storage NetApp.' 
+---
+= Configurare le impostazioni dell'host ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configurazione delle impostazioni di multipath e timeout del server ESXi garantisce disponibilità elevata e integrità dei dati, consentendo di passare senza problemi a un percorso di storage di backup in caso di errore di un percorso primario.
+
+
+
+== Configurare le impostazioni di multipath e timeout del server ESXi
+
+I tool ONTAP per VMware vSphere controllano e impostano le impostazioni di multipath host ESXi e le impostazioni di timeout HBA che funzionano meglio con i sistemi storage NetApp.
+
+*A proposito di questa attività*
+
+A seconda della configurazione e del carico di sistema, questo processo potrebbe richiedere molto tempo. L'avanzamento dell'attività viene visualizzato nel pannello Recent Tasks (attività recenti).
+
+.Fasi
+. Dalla home page del client Web VMware vSphere, selezionare *host e cluster*.
+. Fare clic con il pulsante destro del mouse su un host e selezionare *NetApp ONTAP tools* > *Aggiorna dati host*.
+. Nella pagina dei collegamenti del client Web VMware vSphere, selezionare *NetApp ONTAP tools* nella sezione dei plug-in.
+. Andare alla scheda *ESXi host compliance* nella panoramica (dashboard) degli strumenti ONTAP per il plug-in VMware vSphere.
+. Selezionare il collegamento *Applica impostazioni consigliate*.
+. Nella finestra *Apply Recommended host settings* (Applica impostazioni host consigliate*), selezionare gli host che si desidera aggiornare per rispettare le impostazioni consigliate da NetApp e selezionare *Next* (Avanti).
++
+
+NOTE: È possibile espandere l'host ESXi per visualizzare i valori correnti.
+
+. Nella pagina delle impostazioni, selezionare i valori consigliati secondo necessità.
+. Nel pannello di riepilogo, controllare i valori e selezionare *fine*. È possibile tenere traccia dell'avanzamento nel riquadro attività recenti.
+
+
+
+
+== Impostare i valori dell'host ESXi
+
+Utilizzando gli strumenti ONTAP per VMware vSphere, è possibile impostare timeout e altri valori sugli host ESXi per garantire le migliori prestazioni e il successo del failover. I valori dei tool ONTAP per i set VMware vSphere si basano su test NetApp interni.
+
+È possibile impostare i seguenti valori su un host ESXi:
+
+
+
+=== Impostazioni adattatore HBA/CNA
+
+Consente di impostare le impostazioni di timeout dell'HBA consigliate per i sistemi di archiviazione NetApp.
+
+|===
+| Parametri | Impostare questo valore su... 
+
+
+| Disk.QFullSampleSize | 32 per tutte le configurazioni. L'impostazione di questo valore aiuta a prevenire gli errori di i/O. 
+
+
+| Disk.QFullThreshold | 8 per tutte le configurazioni. L'impostazione di questo valore aiuta a prevenire gli errori di i/O. 
+
+
+| Timeout HBA FC Emulex | Valore predefinito. 
+
+
+| Timeout HBA FC QLogic | Valore predefinito. 
+|===
+
+
+=== Impostazioni MPIO
+
+Le impostazioni MPIO definiscono i percorsi preferiti per i sistemi storage NetApp. Determinano quali percorsi disponibili sono ottimizzati (rispetto a quelli non ottimizzati che attraversano il cavo di interconnessione) e impostano il percorso preferito su uno di tali percorsi.
+
+Negli ambienti a performance elevate o quando si eseguono test delle performance con un singolo datastore LUN, prendere in considerazione la possibilità di modificare l'impostazione del bilanciamento del carico della policy di selezione del percorso psp (round-robin) VMW_PSP_RR (Path Selection Policy) dall'impostazione IOPS predefinita di 1000 a un valore di 1.
+
+
+
+=== Impostazioni NFS
+
+|===
+
+
+| Parametro | Impostare questo valore su... 
+
+
+| NET.TcpipelHeapSize | 32 
+
+
+| NET.TcpipelHeapMax | 1024 MB 
+
+
+| NFS.MaxVolumes | 256 
+
+
+| NFS41.MaxVolumes | 256 
+
+
+| NFS.MaxQueueDepth | 128 o superiore 
+
+
+| NFS.HeartbeatMaxFailures | 10 
+
+
+| NFS.HeartbeatFrequency | 12 
+
+
+| NFS.HeartbeatTimeout | 5 
+|===

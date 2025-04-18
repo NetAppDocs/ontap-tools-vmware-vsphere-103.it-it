@@ -1,0 +1,164 @@
+---
+permalink: concepts/ontap-tools-concepts-terms.html 
+sidebar: sidebar 
+keywords:  
+summary: Nella sezione seguente vengono descritti i concetti e i termini principali utilizzati nel documento. 
+---
+= Concetti e termini chiave
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nella sezione seguente vengono descritti i concetti e i termini principali utilizzati nel documento.
+
+
+
+=== Sistemi ASA r2
+
+I nuovi sistemi NetApp ASA R2 forniscono una soluzione hardware e software unificata che crea un'esperienza semplificata specifica delle esigenze dei clienti SAN. https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html["Informazioni sui sistemi di storage ASA R2"].
+
+
+
+=== Autorità di certificazione (CA)
+
+CA è un'entità attendibile che emette certificati SSL (Secure Sockets Layer).
+
+
+
+=== Gruppo di coerenza
+
+Un gruppo di coerenza è un insieme di volumi gestiti come singola unità. In ONTAP, i gruppi di coerenza offrono una gestione semplice e una garanzia di protezione per un carico di lavoro applicativo che copre più volumi. Ulteriori informazioni su https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["gruppo di coerenza"].
+
+
+
+=== Stack doppio
+
+Una rete dual-stack è un ambiente di rete che supporta l'utilizzo simultaneo di indirizzi IPv4 e IPv6.
+
+
+
+=== Alta disponibilità (ha)
+
+I nodi del cluster sono configurati in coppie ha per operazioni senza interruzioni.
+
+
+
+=== LUN (Logical Unit Number)
+
+Un LUN è un numero utilizzato per identificare un'unità logica all'interno di una SAN (Storage Area Network). Questi dispositivi indirizzabili sono in genere dischi logici a cui si accede tramite il protocollo SCSI (Small computer System Interface) o uno dei suoi derivati incapsulati.
+
+
+
+=== Namespace e sottosistema NVMe
+
+Uno spazio dei nomi NVMe è una quantità di memoria non volatile che può essere formattata in blocchi logici. Gli spazi dei nomi sono l'equivalente dei LUN per i protocolli FC e iSCSI e un sottosistema NVMe è analogo a un igroup. Un sottosistema NVMe può essere associato agli iniziatori in modo che gli iniziatori associati possano accedere agli spazi dei nomi all'interno del sottosistema.
+
+
+
+=== Gestione strumenti ONTAP
+
+ONTAP Tools Manager offre un maggiore controllo ai tool ONTAP per l'amministratore di VMware vSphere sulle istanze di vCenter Server gestite e sui backend storage integrati. ONTAP tools Manager aiuta nella gestione di istanze di vCenter Server, backend di storage, certificati, password e download di bundle di log.
+
+
+
+=== Open Virtual Appliance (OVA)
+
+OVA è uno standard aperto per il packaging e la distribuzione di appliance virtuali o software che devono essere eseguiti su macchine virtuali.
+
+
+
+=== Obiettivo RPO (Recovery Point Objective)
+
+Il valore di RPO misura la frequenza di esecuzione del backup o della replica dei dati. Rappresenta il momento in cui i dati devono essere ripristinati dopo un'interruzione per poter riprendere le operazioni di business. Ad esempio, se un'organizzazione ha un RPO di 4 ore, può tollerare la perdita di dati fino a 4 ore in caso di disastro.
+
+
+
+=== SnapMirror Active Sync (SMAS)
+
+SnapMirror Active Sync consente ai servizi di business di continuare a funzionare anche in caso di guasto completo del sito, supportando le applicazioni per il failover in modo trasparente con una copia secondaria. Per attivare un failover con la sincronizzazione attiva di SnapMirror sono necessari un intervento manuale e script personalizzato. Ulteriori informazioni su https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["Sincronizzazione attiva di SnapMirror"].
+
+
+
+=== Back-end dello storage
+
+I backend dello storage sono l'infrastruttura storage sottostante che l'host ESXi utilizza per memorizzare file, dati e altre risorse della macchina virtuale. Il backend dello storage consente all'host ESXi di accedere e gestire i dati persistenti, fornendo le funzionalità e le performance dello storage necessarie per l'ambiente virtualizzato.
+
+
+
+=== Storage Replication Adapter (SRA)
+
+SRA è il software specifico del fornitore di soluzioni di storage installato all'interno dell'appliance VMware Live Site Recovery. L'adattatore abilita la comunicazione tra Site Recovery Manager e uno storage controller a livello di Storage Virtual Machine (SVM) e la configurazione a livello del cluster.
+
+
+
+=== Storage Virtual Machine (SVM)
+
+Come una macchina virtuale in esecuzione su un hypervisor, la SVM è un'entità logica che astrae le risorse fisiche. SVM contiene volumi di dati e una o più LIF attraverso i quali distribuiscono dati ai client.
+
+
+
+=== Configurazione uniforme e non uniforme
+
+* *Accesso uniforme all'host* significa che gli host di entrambi i siti sono connessi a tutti i percorsi ai cluster di storage su entrambi i siti. I percorsi tra siti trasversali sono estesi a ogni distanza.
+* *Accesso host non uniforme* significa che gli host in ogni sito sono connessi solo al cluster nello stesso sito. I percorsi tra siti e quelli estesi non sono connessi.
++
+
+NOTE: È supportato un accesso host uniforme per qualsiasi implementazione SnapMirror Active Sync; l'accesso host non uniforme è supportato solo per le implementazioni Active/Active simmetriche.
+
+
+
+
+
+=== File system della macchina virtuale (VMFS)
+
+VMFS è un file system in cluster appositamente progettato per l'archiviazione dei file delle macchine virtuali negli ambienti VMware vSphere.
+
+
+
+=== Volumi virtuali (vVol)
+
+I vVol offrono un'astrazione a livello di volume per lo storage utilizzato da una macchina virtuale. Include diversi vantaggi e offre un'alternativa all'utilizzo di un LUN tradizionale. Di solito, un datastore vVol è associato a una singola LUN che agisce come container per i vVol.
+
+
+
+=== Policy per lo storage delle VM
+
+Le policy storage delle macchine virtuali vengono create in vCenter Server in Policy e profili. Per vVol, creare un set di regole utilizzando le regole del provider di tipi di storage NetApp vVol.
+
+
+
+=== Ripristino sito live di VMware
+
+VMware Live Site Recovery offre funzionalità di business continuity, disaster recovery, migrazione dei siti e test senza interruzioni per gli ambienti virtuali VMware.
+
+
+
+=== API VMware vSphere per Storage Awareness (VASA)
+
+VASA è un set di API che integrano gli storage array con vCenter Server per la gestione e l'amministrazione. L'architettura si basa su diversi componenti, tra cui il provider VASA che gestisce la comunicazione tra VMware vSphere e i sistemi storage.
+
+
+
+=== API storage di VMware vSphere: Integrazione degli array (VAAI)
+
+VAAI è un set di API che consente la comunicazione tra gli host di VMware vSphere ESXi e i dispositivi storage. Le API comprendono un set di operazioni primitive utilizzate dagli host per scaricare operazioni di storage sull'array. VAAI può offrire miglioramenti significativi delle performance per i task a uso intensivo di storage.
+
+
+
+=== VSphere Metro Storage Cluster
+
+VSphere Metro Storage Cluster (vMSC) è una tecnologia che consente e supporta vSphere in un'implementazione cluster estesa. Le soluzioni vMSC sono supportate con la sincronizzazione attiva di NetApp MetroCluster e SnapMirror (in precedenza SMBC). Queste soluzioni forniscono una migliore business continuity in caso di errore del dominio. Il modello di resilienza si basa sulle tue scelte specifiche di configurazione. Ulteriori informazioni su https://core.vmware.com/resource/vmware-vsphere-metro-storage-cluster-vmsc["Cluster di storage VMware vSphere Metro"].
+
+
+
+=== Datastore vVol
+
+Il datastore vVol è una rappresentazione logica del datastore di un contenitore vVol creato e gestito da un provider VASA.
+
+
+
+=== RPO zero
+
+RPO è l'acronimo di Recovery Point Objective, ovvero la quantità di perdita di dati ritenuta accettabile in un determinato periodo di tempo. Zero RPO indica che non è accettabile alcuna perdita di dati.

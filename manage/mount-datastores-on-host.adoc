@@ -1,0 +1,34 @@
+---
+permalink: manage/mount-datastores-on-host.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Il montaggio di un datastore fornisce l"accesso allo storage a host aggiuntivi. È possibile montare il datastore sugli host aggiuntivi dopo aver aggiunto gli host all"ambiente VMware.' 
+---
+= Montare datastore NFS e VMFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il montaggio di un datastore fornisce l'accesso allo storage a host aggiuntivi. È possibile montare il datastore sugli host aggiuntivi dopo aver aggiunto gli host all'ambiente VMware.
+
+.A proposito di questa attività
+* Alcune azioni del pulsante destro del mouse sono disattivate o non disponibili a seconda della versione del client vSphere e del tipo di datastore selezionato.
++
+** Se si utilizza vSphere client 8,0 o versioni successive, alcune delle opzioni del pulsante destro del mouse sono nascoste.
+** Dalle versioni di vSphere 7.0U3 a vSphere 8,0, anche se vengono visualizzate le opzioni, l'azione verrà disattivata.
+
+
+* L'opzione mount datastore è disabilitata quando il cluster di host è protetto con configurazioni uniformi.
+
+
+.Fasi
+. Dalla home page di vSphere Client, selezionare *host e cluster*.
+. Nel riquadro di spostamento di sinistra, selezionare i data center contenenti gli host.
+. Per montare i datastore NFS/VMFS su host o cluster host, fare clic con il pulsante destro del mouse e selezionare *NetApp ONTAP tools* > *Mount Datastores*.
+. Selezionare gli archivi dati che si desidera montare e selezionare *Mount*.
+
+
+.Quali sono le prossime novità?
+È possibile tenere traccia dell'avanzamento nel riquadro attività recenti.

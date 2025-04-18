@@ -1,0 +1,60 @@
+---
+permalink: manage/edit-appliance-settings.html 
+sidebar: sidebar 
+keywords:  
+summary: 'È possibile modificare la password dell"amministratore utilizzando ONTAP Tools Manager.' 
+---
+= Modifica i tool di ONTAP per la configurazione di VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzando ONTAP tools Manager, scala in verticale i tool ONTAP per la configurazione di VMware vSphere per aumentare il numero di nodi nell'implementazione o modificare la configurazione in impostazione ha (High Availability). I tool ONTAP per l'appliance VMware vSphere vengono inizialmente implementati in una configurazione non ha a nodo singolo.
+
+*Prima di iniziare*
+
+* Assicurarsi che il modello OVA abbia la stessa versione OVA del nodo 1. Il nodo 1 è il nodo predefinito in cui vengono inizialmente implementati i tool ONTAP per VMware vSphere OVA.
+* Assicurarsi che l'hot add della CPU e l'hot plug della memoria siano abilitati.
+
+
+.Fasi
+. Avviare Gestione strumenti ONTAP da un browser Web: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Effettua l'accesso con i tool ONTAP per le credenziali di amministratore di VMware vSphere fornite durante l'implementazione.
+. Selezionare *Modifica impostazioni appliance* nella sezione Panoramica.
+. Nella sezione *Configurazione*, è possibile scalare in verticale per aumentare le dimensioni del nodo e abilitare la configurazione ha in base alle proprie esigenze. Sono necessarie le credenziali vCenter Server per apportare eventuali modifiche.
++
+Quando gli strumenti ONTAP sono nella configurazione ha, puoi modificare i dettagli della libreria di contenuti. È necessario fornire nuovamente la password per la nuova modifica.
+
++
+
+NOTE: Nei tool ONTAP per VMware vSphere, è consentito solo aumentare le dimensioni del nodo, non è possibile ridurre le dimensioni del nodo. In una configurazione non ha, è supportata solo una configurazione di dimensioni medie. In un'impostazione ha sono supportate le configurazioni di medie e grandi dimensioni.
+
+. Utilizzare il pulsante di commutazione ha per abilitare la configurazione ha. Nella pagina *ha settings*, verificare che:
++
+** La libreria di contenuti appartiene allo stesso vCenter Server in cui vengono eseguite le macchine virtuali del nodo degli strumenti ONTAP. Le credenziali vCenter Server vengono utilizzate per convalidare e scaricare il modello OVA per le modifiche all'appliance.
+** La macchina virtuale che ospita gli strumenti ONTAP non viene implementata direttamente su un host ESXi. La VM deve essere distribuita su un cluster o su un pool di risorse.
++
+
+NOTE: Una volta abilitata la configurazione ha, non puoi tornare a una configurazione non ha a nodo singolo.
+
+
+
+. Nella sezione *ha settings* della finestra *Edit Appliance Settings*, è possibile immettere i dettagli dei nodi 2 e 3. I tool ONTAP per VMware vSphere supportano tre nodi nel setup ha.
++
+
+NOTE: La maggior parte delle opzioni di input sono precompilate con i dettagli della rete del nodo 1 per semplificare il flusso di lavoro. Tuttavia, è possibile modificare i dati di input prima di passare alla pagina finale della procedura guidata. È possibile immettere i dettagli dell'indirizzo IPv6 per gli altri due nodi solo quando l'indirizzo IPv6 è attivato sul primo nodo.
+
++
+Assicurarsi che un host ESXi contenga solo una VM di strumenti ONTAP. I dati immessi vengono convalidati ogni volta che si passa alla finestra successiva.
+
+. Rivedere i dettagli nella sezione *Riepilogo* e *Salva* le modifiche.
+
+
+.Quali sono le prossime novità?
+La pagina *Panoramica* mostra lo stato della distribuzione. Utilizzando l'ID lavoro, è anche possibile tenere traccia dello stato del lavoro di modifica delle impostazioni del dispositivo dalla vista processi.
+
+In caso di errore dell'implementazione ha e lo stato del nuovo nodo diventa "nuovo", elimina la nuova VM in vCenter prima di riprovare l'operazione di abilitazione ha.
+
+La scheda *Avvisi* sul pannello di sinistra elenca gli avvisi per gli strumenti ONTAP per VMware vSphere.

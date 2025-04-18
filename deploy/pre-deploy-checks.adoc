@@ -1,0 +1,136 @@
+---
+permalink: deploy/pre-deploy-checks.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: Prima di implementare gli strumenti ONTAP per VMware vSphere, è necessario conoscere i requisiti di spazio per il pacchetto di distribuzione e alcuni requisiti di base del sistema host. 
+---
+= Prima di iniziare…​
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di procedere con la distribuzione, assicurarsi che siano soddisfatti i seguenti requisiti:
+
+|===
+| Requisiti | Il tuo stato 
+
+
+| La versione vSphere, la versione ONTAP e la versione host ESXi sono compatibili con la versione dei tool ONTP. | ❏ Sì ❏ No 
+
+
+| L'ambiente vCenter Server è configurato e configurato | ❏ Sì ❏ No 
+
+
+| La cache del browser è stata eliminata | ❏ Sì ❏ No 
+
+
+| Si dispone delle credenziali vCenter Server padre | ❏ Sì ❏ No 
+
+
+| Si dispone delle credenziali di accesso per l'istanza di vCenter Server, a cui gli strumenti ONTAP per VMware vSphere si collegheranno dopo la distribuzione per la registrazione | ❏ Sì ❏ No 
+
+
+| Il nome di dominio su cui viene emesso il certificato viene mappato all'indirizzo IP virtuale in una distribuzione multi-vCenter in cui i certificati CA personalizzati sono obbligatori. | ❏ Sì ❏ No 
+
+
+| È stato eseguito il controllo nslookup sul nome di dominio per verificare se il dominio viene risolto all'indirizzo IP desiderato. | ❏ Sì ❏ No 
+
+
+| Il certificato viene creato con il nome di dominio e l'indirizzo IP degli strumenti ONTAP. | ❏ Sì ❏ No 
+
+
+| L'applicazione degli strumenti ONTAP e i servizi interni sono raggiungibili da vCenter Server. | ❏ Sì ❏ No 
+
+
+| Utilizzando SVM multi-tenant, disponi di un LIF di gestione SVM su ciascuna SVM. | ❏ Sì ❏ No 
+|===
+
+
+== Foglio di lavoro distribuzione
+
+
+
+=== Per implementazione a nodo singolo
+
+Utilizzare il seguente foglio di lavoro per raccogliere le informazioni necessarie per i tool ONTAP per la distribuzione iniziale di VMware vSphere: Per gli strumenti ONTAP per la distribuzione iniziale di VMware vSphere:
+
+|===
+| Requisito | Il tuo valore 
+
+
+| Indirizzo IP per l'applicazione ONTAP Tools |  
+
+
+| Indirizzo IP di interconnessione dei nodi per la comunicazione tra nodi |  
+
+
+| Nome host DNS per il primo nodo |  
+
+
+| Server DNS primario |  
+
+
+| Server DNS secondario |  
+
+
+| Dominio di ricerca DNS |  
+
+
+| Indirizzo IPv4 per il nodo primario |  
+
+
+| Subnet mask dell'indirizzo IPv4 |  
+
+
+| Gateway predefinito per l'indirizzo IPv4 |  
+
+
+| Indirizzo IPv6 (opzionale) |  
+
+
+| Lunghezza prefisso IPv6 (opzionale) |  
+
+
+| Gateway per l'indirizzo IPv6 (opzionale) |  
+|===
+Creare record DNS per tutti gli indirizzi IP indicati sopra. Prima di assegnare i nomi host, eseguire il mapping agli indirizzi IP liberi sul DNS. Tutti gli indirizzi IP devono trovarsi sulla stessa VLAN selezionata per la distribuzione.
+
+
+
+=== Per l'implementazione ha (High Availability, alta disponibilità)
+
+Oltre ai requisiti di implementazione a nodo singolo, per l'implementazione ha sono necessarie le seguenti informazioni:
+
+|===
+
+
+| Requisito | Il tuo valore 
+
+
+| Server DNS primario |  
+
+
+| Server DNS secondario |  
+
+
+| Dominio di ricerca DNS |  
+
+
+| Nome host DNS per il secondo nodo |  
+
+
+| Indirizzo IP per il secondo nodo |  
+
+
+| Nome host DNS per il terzo nodo |  
+
+
+| Indirizzo IP per il terzo nodo |  
+|===
+
+
+== Configurazione del firewall di rete
+
+Aprire le porte richieste per gli indirizzi IP nel firewall di rete. I tool ONTAP devono essere in grado di raggiungere questa LIF tramite la porta 443. Per gli aggiornamenti più recenti, consultare la sezionelink:../deploy/prerequisites.html["Requisiti delle porte"].

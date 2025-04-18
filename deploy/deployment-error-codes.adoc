@@ -1,0 +1,129 @@
+---
+permalink: deploy/deployment-error-codes.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: In questa pagina vengono descritti i codici di errore per le operazioni di distribuzione, riavvio e ripristino degli strumenti ONTAP per il sistema VMware vSphere. 
+---
+= Codici di errore di distribuzione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbero verificarsi codici di errore durante gli strumenti ONTAP per le operazioni di distribuzione, riavvio e ripristino di VMware vSphere. I codici di errore sono composti da cinque cifre, in cui le prime due rappresentano lo script che ha riscontrato il problema e le ultime tre cifre rappresentano il flusso di lavoro specifico all'interno dello script.
+
+Tutti i registri degli errori vengono registrati nel file ansible-perl-errors.log per facilitare il monitoraggio e la risoluzione dei problemi. Questo file di registro contiene il codice di errore e l'attività Ansible non riuscita.
+
+
+NOTE: I codici di errore forniti in questa pagina sono solo a scopo di riferimento. Se l'errore persiste o se non è stata menzionata alcuna soluzione, contattare il team di supporto.
+
+Nella tabella seguente sono elencati i codici di errore e i nomi dei file corrispondenti.
+
+|===
+
+
+| *Codice errore* | *Nome script* 
+
+
+| 00 | firstboot-network-config.pl, distribuzione in modalità 
+
+
+| 01 | firstboot-network-config.pl, aggiornamento della modalità 
+
+
+| 02 | firstboot-inputs-validation.pl 
+
+
+| 03 | firstboot-deploy-otv-ng.pl, implementazione, ha 
+
+
+| 04 | firstboot-deploy-otv-ng.pl, implementazione, non ha 
+
+
+| 05 | firstboot-deploy-otv-ng.pl, riavviare 
+
+
+| 06 | firstboot-deploy-otv-ng.pl, upgrade, ha 
+
+
+| 07 | firstboot-deploy-otv-ng.pl, upgrade, non ha 
+
+
+| 08 | firstboot-otv-recovery.pl 
+
+
+| 09 | post-deploy-upgrade.pl 
+|===
+Le ultime tre cifre del codice di errore indicano l'errore specifico del flusso di lavoro nello script:
+
+|===
+
+
+| *Codice errore di distribuzione* | *Flusso di lavoro* | *Risoluzione* 
+
+
+| 050 | Generazione chiave SSH non riuscita | Riavviare la macchina virtuale primaria (VM). 
+
+
+| 053 | Installazione RKE2 non riuscita | Eseguire le seguenti operazioni e riavviare la macchina virtuale primaria o ridistribuire: Sudo rke2-killall.sh (tutte le macchine virtuali) sudo rke2-uninstall.sh (tutte le macchine virtuali). 
+
+
+| 054 | Impostazione kubeconfig non riuscita | Ridistribuzione 
+
+
+| 055 | Distribuzione del registro non riuscita | Se il pod del Registro di sistema è presente, attendere che il pod sia pronto, quindi riavviare la macchina virtuale primaria oppure ridistribuirla. 
+
+
+| 059 | La distribuzione di KubeVip non è riuscita | Garantire che l'indirizzo IP virtuale per il piano di controllo di Kubernetes e l'indirizzo IP del bilanciatore di carico fornito durante l'implementazione appartengano alla stessa VLAN e sono indirizzi IP gratuiti. Riavviare se tutti i punti precedenti sono corretti. Altrimenti, ridistribuzione. 
+
+
+| 060 | L'implementazione dell'operatore non è riuscita | Riavviare 
+
+
+| 061 | Distribuzione dei servizi non riuscita | Esegui il debug di base di Kubernetes come Get pods, Get rs, Get svc e così via nello spazio dei nomi del sistema ntv per maggiori dettagli e log degli errori su /var/log/ansible-perl-errors.log e /var/log/ansible-run.log e ridistribuisci. 
+
+
+| 062 | La distribuzione dei servizi strumenti ONTAP non è riuscita | Fare riferimento ai log degli errori in /var/log/ansible-perl-errors.log per ulteriori dettagli e ridistribuire. 
+
+
+| 065 | L'URL della pagina Swagger non è raggiungibile | Ridistribuzione 
+
+
+| 066 | I passaggi di post-implementazione per il certificato del gateway non sono riusciti | Effettuare le seguenti operazioni per recuperare/completare l'aggiornamento: * Attiva shell diagnostica. * Eseguire il comando 'sudo perl /home/maint/scripts/post-deploy-upgrade.pl --postDeploy'. * Controllare i log in /var/log/post-deploy-upgrade.log. 
+
+
+| 088 | La configurazione della rotazione del registro per il giornale non è riuscita | Verificare le impostazioni di rete della VM compatibili con l'host su cui è ospitata la VM. È possibile provare a eseguire la migrazione a un altro host e riavviare la macchina virtuale. 
+
+
+| 089 | La modifica della proprietà del file di configurazione rotazione del registro di riepilogo non è riuscita | Riavviare la macchina virtuale principale. 
+
+
+| 096 | Installa il provisioner di storage dinamico | - 
+
+
+| 108 | Seeding script non riuscito | - 
+|===
+|===
+
+
+| *Riavviare il codice di errore* | *Flusso di lavoro* | *Risoluzione* 
+
+
+| 067 | Attesa per rke2-server scaduta. | - 
+
+
+| 101 | Impossibile reimpostare la password utente Maint/Console. | - 
+
+
+| 102 | Impossibile eliminare il file della password durante la reimpostazione della password utente Maint/Console. | - 
+
+
+| 103 | Impossibile aggiornare la nuova password utente Maint/Console nel vault. | - 
+
+
+| 088 | La configurazione della rotazione del registro per il giornale non è riuscita. | Verificare le impostazioni di rete della VM compatibili con l'host su cui è ospitata la VM. È possibile provare a eseguire la migrazione a un altro host e riavviare la macchina virtuale. 
+
+
+| 089 | La modifica della proprietà del file di configurazione rotazione del registro di riepilogo non è riuscita. | Riavviare l'VM. 
+|===

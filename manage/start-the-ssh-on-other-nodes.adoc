@@ -1,0 +1,30 @@
+---
+permalink: manage/start-the-ssh-on-other-nodes.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Prima di eseguire l"aggiornamento, è necessario avviare SSH su altri nodi.' 
+---
+= Avviare SSH su altri nodi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di eseguire l'aggiornamento, è necessario avviare SSH su altri nodi.
+
+.Prima di iniziare
+L'estensione del provider VASA deve essere abilitata per l'istanza di vCenter Server.
+
+*A proposito di questa attività*
+
+Eseguire questa procedura su ciascun nodo prima di eseguire l'aggiornamento.
+
+.Fasi
+. Dal server vCenter, aprire una console per il provider VASA.
+. Accedere come utente di manutenzione.
+. Immettere `4` per selezionare Support and Diagnostics (supporto e diagnostica).
+. Immettere `1` per selezionare Access Diagnostic shell.
+. Immettere `y` per continuare.
+. Eseguire il comando _sudo systemctl restart ssh_.
+

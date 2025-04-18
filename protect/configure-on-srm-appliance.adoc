@@ -1,0 +1,43 @@
+---
+permalink: protect/configure-on-srm-appliance.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Dopo aver implementato l"appliance VMware Live Site Recovery, è necessario configurare SRA sull"appliance VMware Live Site Recovery. La corretta configurazione di SRA consente all"appliance VMware Live Site Recovery di comunicare con SRA per la gestione del disaster recovery. È necessario archiviare gli strumenti ONTAP per le credenziali VMware vSphere \(indirizzo IP e password amministratore\) nell"appliance VMware Live Site Recovery per consentire la comunicazione tra l"appliance VMware Live Site Recovery e SRA.' 
+---
+= Configurare SRA sull'appliance VMware Live Site Recovery
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver implementato l'appliance VMware Live Site Recovery, è necessario configurare SRA sull'appliance VMware Live Site Recovery. La corretta configurazione di SRA consente all'appliance VMware Live Site Recovery di comunicare con SRA per la gestione del disaster recovery. È necessario memorizzare gli strumenti ONTAP per le credenziali VMware vSphere (indirizzo IP) nell'appliance VMware Live Site Recovery per consentire la comunicazione tra l'appliance VMware Live Site Recovery e SRA.
+
+.Prima di iniziare
+Il file _tar.gz_ dovrebbe essere stato scaricato da https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["Sito di supporto NetApp"].
+
+*A proposito di questa attività*
+
+La configurazione di SRA sull'appliance VMware Live Site Recovery memorizza le credenziali SRA nell'appliance VMware Live Site Recovery.
+
+.Fasi
+. Nella schermata dell'appliance VMware Live Site Recovery, selezionare *Storage Replication Adapter* > *New Adapter*.
+. Caricare il file _.tar.gz_ su VMware Live Site Recovery.
+. Accedere utilizzando l'account amministratore all'appliance VMware Live Site Recovery utilizzando PuTTY.
+. Passare all'utente root utilizzando il comando: `su root`
+. Eseguire il comando `cd /var/log/vmware/srm` per accedere alla directory del registro.
+. Nella posizione del registro, immettere il comando per ottenere l'ID docker utilizzato da SRA: `docker ps -l`
+. Per accedere all'ID contenitore, immettere il comando: `docker exec -it -u srm <container id> sh`
+. Configurare VMware Live Site Recovery con gli strumenti ONTAP per l'indirizzo IP e la password di VMware vSphere utilizzando il comando: `perl command.pl -I --otv-ip <OTV_IP>:8443 --otv-username <Application username> --otv-password <Application password> --vcenter-guid <VCENTER_GUID>'`
++
+
+NOTE: È necessario fornire il valore della password tra virgolette singole per assicurarsi che lo script Perl non legga i caratteri speciali nella password come delimitatore dell'input.
+
++
+
+NOTE: Il nome utente e la password dell'applicazione vengono impostati durante la distribuzione di ONTAP Tools. Questo è necessario per la registrazione VASA Provider/SRA.
+
+. Eseguire nuovamente la scansione delle schede di rete per verificare che i dettagli siano aggiornati nella pagina VMware Live Site Recovery Storage Replication Adapters (schede di replica storage di VMware Live Site Recovery).
+
+
+Viene visualizzato un messaggio di conferma dell'avvenuta memorizzazione delle credenziali di storage. SRA può comunicare con il server SRA utilizzando l'indirizzo IP, la porta e le credenziali forniti.

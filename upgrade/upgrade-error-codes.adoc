@@ -1,0 +1,161 @@
+---
+permalink: upgrade/upgrade-error-codes.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: 'In questa pagina vengono descritti i codici di errore per l"operazione di aggiornamento degli strumenti ONTAP per il sistema VMware vSphere.' 
+---
+= Aggiornare i codici di errore
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile che si verifichino codici di errore durante gli strumenti ONTAP per l'operazione di aggiornamento di VMware vSphere. I codici di errore sono composti da cinque cifre, in cui le prime due rappresentano lo script che ha riscontrato il problema e le ultime tre cifre rappresentano il flusso di lavoro specifico all'interno dello script.
+
+Tutti i registri degli errori vengono registrati nel file ansible-perl-errors.log per facilitare il monitoraggio e la risoluzione dei problemi. Questo file di registro contiene il codice di errore e l'attività Ansible non riuscita.
+
+
+NOTE: I codici di errore forniti in questa pagina sono solo a scopo di riferimento. Se l'errore persiste o se non è stata menzionata alcuna soluzione, contattare il team di supporto.
+
+Nella tabella seguente sono elencati i codici di errore e i nomi dei file corrispondenti.
+
+|===
+
+
+| *Codice errore* | *Nome script* 
+
+
+| 00 | firstboot-network-config.pl, distribuzione in modalità 
+
+
+| 01 | firstboot-network-config.pl, aggiornamento della modalità 
+
+
+| 02 | firstboot-inputs-validation.pl 
+
+
+| 03 | firstboot-deploy-otv-ng.pl, implementazione, ha 
+
+
+| 04 | firstboot-deploy-otv-ng.pl, implementazione, non ha 
+
+
+| 05 | firstboot-deploy-otv-ng.pl, riavviare 
+
+
+| 06 | firstboot-deploy-otv-ng.pl, upgrade, ha 
+
+
+| 07 | firstboot-deploy-otv-ng.pl, upgrade, non ha 
+
+
+| 08 | firstboot-otv-recovery.pl 
+
+
+| 09 | post-deploy-upgrade.pl 
+|===
+Le ultime tre cifre del codice di errore indicano l'errore specifico del flusso di lavoro nello script:
+
+|===
+
+
+| *Codice errore di aggiornamento* | *Flusso di lavoro* | *Risoluzione* 
+
+
+| 068 | Il rollback dei pacchetti Debian non è riuscito | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 069 | Ripristino dei file non riuscito | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 070 | Impossibile eliminare il backup | - 
+
+
+| 071 | Il cluster Kubernetes non era integro | - 
+
+
+| 074 | Montaggio ISO non riuscito | Controllare /var/log/upgrade-run.log e riprovare l'aggiornamento. 
+
+
+| 075 | I controlli preliminari dell'aggiornamento non sono riusciti | Riprovare a eseguire l'aggiornamento. 
+
+
+| 076 | Aggiornamento del Registro di sistema non riuscito | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 077 | Ripristino del Registro di sistema non riuscito | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 078 | Aggiornamento dell'operatore non riuscito | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 079 | Il richiamo dell'operatore non è riuscito | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 080 | Aggiornamento servizi non riuscito | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 081 | Ripristino servizi non riuscito | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 082 | Eliminazione delle vecchie immagini dal contenitore non riuscita | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 083 | Eliminazione backup non riuscita | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 084 | La modifica di JobManager in produzione non è riuscita | Per ripristinare/completare l'aggiornamento, procedere come segue. 1. Attivare la shell diagnostica 2. Esegui il comando: _Sudo perl /home/maint/scripts/post-deploy-upgrade.pl --postupgrade_ 3. Controllare i log in /var/log/post-deploy-upgrade.log 
+
+
+| 087 | Procedura di post-aggiornamento non riuscita. | Per ripristinare/completare l'aggiornamento, procedere come segue. 1. Attivare la shell diagnostica 2. Eseguire _sudo perl /home/maint/scripts/post-deploy-upgrade.pl --postupgrade_ comando 3. Controllare i log in /var/log/post-deploy-upgrade.log 
+
+
+| 088 | La configurazione della rotazione del registro per il giornale non è riuscita | Verificare le impostazioni di rete della VM compatibili con l'host su cui è ospitata la VM. È possibile provare a eseguire la migrazione della macchina virtuale su un altro host e riavviare. 
+
+
+| 089 | La modifica della proprietà del file di configurazione rotazione del registro di riepilogo non è riuscita | Riprovare a eseguire l'aggiornamento. 
+
+
+| 093 | L'aggiornamento del provisioner di storage dinamico non è riuscito | Riprovare a eseguire l'aggiornamento. 
+
+
+| 094 | Il rollback del provisioner di storage dinamico non è riuscito | Riprovare a eseguire l'aggiornamento. 
+
+
+| 095 | Aggiornamento del sistema operativo non riuscito | Nessun ripristino per l'aggiornamento del sistema operativo. I servizi degli strumenti ONTAP vengono aggiornati e saranno in esecuzione nuovi pod. 
+
+
+| 096 | Installa il provisioner di storage dinamico | Controllare i registri di aggiornamento e riprovare l'aggiornamento. 
+
+
+| 097 | La disinstallazione dei servizi per l'aggiornamento non è riuscita | Utilizzare un RPO pari a zero o un ripristino basato su snapshot e riprovare l'aggiornamento. 
+
+
+| 098 | la copia del segreto dockercred dal sistema ntv allo spazio dei nomi del provisioner di storage dinamico non è riuscita | Controllare i registri di aggiornamento e riprovare l'aggiornamento. 
+
+
+| 099 | Impossibile convalidare la nuova aggiunta di HDD | Aggiungi il nuovo HDD a tutti i nodi in caso di ha e a un nodo in caso di implementazione non ha. 
+
+
+| 108 | Seeding script non riuscito | - 
+
+
+| 109 | il backup dei dati del volume persistente non è riuscito | Controllare i registri di aggiornamento e riprovare l'aggiornamento. 
+
+
+| 110 | ripristino dei dati del volume persistente non riuscito | Utilizza un ripristino basato su RPO pari a zero o su snapshot e riprova l'aggiornamento. 
+
+
+| 111 | Aggiornamento dei parametri di timeout etcd per RKE2 non riuscito | Controllare i registri di aggiornamento e riprovare l'aggiornamento. 
+
+
+| 112 | La disinstallazione del provisioner di storage dinamico non è riuscita | - 
+
+
+| 113 | Aggiornamento delle risorse sui nodi secondari non riuscito | Controllare i registri di aggiornamento e riprovare l'aggiornamento. 
+|===
+
+NOTE: I tool ONTAP per VMware vSphere 10,3 non supportano RPO pari a zero.
+
+Scopri di più su https://kb.netapp.com/data-mgmt/OTV/VSC_Kbs/How_to_restore_ONTAP_tools_for_VMware_vSphere_if_upgrade_fails_from_version_10.0_to_10.1["Come ripristinare i tool ONTAP per VMware vSphere se l'aggiornamento non riesce dalla versione 10,0 alla 10,1"]

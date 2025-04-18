@@ -1,0 +1,63 @@
+---
+permalink: manage/migrate-virtual-machines.html 
+sidebar: sidebar 
+keywords:  
+summary: Dovresti essere consapevole di alcune considerazioni durante la migrazione di macchine virtuali esistenti nel tuo data center. 
+---
+= Considerazioni per migrare o clonare macchine virtuali
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È importante tenere presenti alcune considerazioni relative alla migrazione delle macchine virtuali esistenti nel data center.
+
+
+
+== Migrazione di macchine virtuali protette
+
+È possibile migrare le macchine virtuali protette in:
+
+* Stesso datastore vVol in un host ESXi diverso
+* Datastore vVol compatibile diverso nello stesso host ESXi
+* Datastore vVol compatibile diverso in un host ESXi diverso
+
+
+Se la macchina virtuale viene migrata su un volume FlexVol diverso, anche il rispettivo file di metadati viene aggiornato con le informazioni della macchina virtuale. Se una macchina virtuale viene migrata su un host ESXi diverso ma sullo stesso storage, il file di metadati del volume FlexVol sottostante non verrà modificato.
+
+
+
+== Clonare macchine virtuali protette
+
+È possibile clonare le macchine virtuali protette nei seguenti modi:
+
+* Stesso container dello stesso volume FlexVol che utilizza un gruppo di replica
++
+Il file di metadati dello stesso volume FlexVol viene aggiornato con i dettagli della macchina virtuale clonata.
+
+* Stesso container di un volume FlexVol diverso che utilizza un gruppo di replica
++
+Il volume FlexVol in cui viene posizionata la macchina virtuale clonata, il file di metadati viene aggiornato con i dettagli della macchina virtuale clonata.
+
+* Datastore di vVol o container diverso
++
+Il volume FlexVol in cui viene posizionata la macchina virtuale clonata, il file di metadati viene aggiornato con i dettagli della macchina virtuale.
+
+
+
+Attualmente VMware non supporta le macchine virtuali clonate su un modello VM.
+
+È supportato il clone di una macchina virtuale protetta.
+
+Per ulteriori dettagli, fare riferimento https://docs.vmware.com/en/VMware-Horizon/2103/virtual-desktops/GUID-B5020738-8649-4308-A8B0-70AF80527DF6.html["Creazione di una macchina virtuale per la clonazione"] a.
+
+
+
+== Snapshot delle macchine virtuali
+
+Attualmente sono supportate solo le istantanee delle macchine virtuali senza memoria. Se la macchina virtuale dispone di Snapshot con memoria, la macchina virtuale non viene presa in considerazione per la protezione.
+
+Inoltre, non è possibile proteggere le macchine virtuali non protette che dispongono di snapshot di memoria. Per questa release, si prevede di eliminare lo snapshot di memoria prima di attivare la protezione per la macchina virtuale.
+
+Per Windows VM con tipo di storage ASA R2, quando si crea una snapshot della macchina virtuale, si tratta di uno snapshot di sola lettura. In caso di chiamata all'accensione per la VM, il provider VASA crea una LUN utilizzando lo snapshot di sola lettura, quindi la abilita per gli IOPS. Durante la richiesta di spegnimento, il provider VASA elimina il LUN creato, quindi disattiva gli IOPS.

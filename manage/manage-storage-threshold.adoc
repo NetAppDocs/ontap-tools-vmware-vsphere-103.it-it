@@ -1,0 +1,21 @@
+---
+permalink: manage/manage-storage-threshold.html 
+sidebar: sidebar 
+keywords:  
+summary: Puoi impostare la soglia per ricevere notifiche in vCenter Server quando il volume e la capacità aggregata raggiungono determinati livelli. 
+---
+= Gestire le soglie di storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi impostare la soglia per ricevere notifiche in vCenter Server quando il volume e la capacità aggregata raggiungono determinati livelli.
+
+.Fasi:
+. Accedere al client vSphere
+. Nella pagina Collegamenti, selezionare *NetApp ONTAP tools* nella sezione dei plug-in.
+. Nel riquadro sinistro degli strumenti di ONTAP, selezionare *Impostazioni* > *Impostazioni soglia* > *Modifica*.
+. Nella finestra *Modifica soglia*, immettere i valori desiderati nei campi *quasi pieno* e *pieno* e selezionare *Salva*. È possibile ripristinare i valori consigliati, ovvero 80 per quasi pieno e 90 per completo.
+

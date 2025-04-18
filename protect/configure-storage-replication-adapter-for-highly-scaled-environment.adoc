@@ -1,0 +1,68 @@
+---
+permalink: protect/configure-storage-replication-adapter-for-highly-scaled-environment.html 
+sidebar: sidebar 
+keywords:  
+summary: 'È necessario configurare gli intervalli di timeout della memoria in base alle impostazioni consigliate per l"adattatore di replica della memoria di massa \(SRA\) in modo che funzionino in modo ottimale in ambienti altamente scalabili.' 
+---
+= Configurare SRA per ambienti ad alta scalabilità
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario configurare gli intervalli di timeout dello storage in base alle impostazioni consigliate per Storage Replication Adapter (SRA) in modo da garantire prestazioni ottimali in ambienti altamente scalabili.
+
+
+
+== Impostazioni del provider di storage
+
+È necessario impostare i seguenti valori di timeout su VMware Live Site Recovery per l'ambiente scalato:
+
+|===
+
+
+| *Impostazioni avanzate* | *Valori di timeout* 
+
+
+ a| 
+`StorageProvider.resignatureTimeout`
+ a| 
+Aumentare il valore dell'impostazione da 900 secondi a 12000 secondi.
+
+
+
+ a| 
+`storageProvider.hostRescanDelaySec`
+ a| 
+60
+
+
+
+ a| 
+`storageProvider.hostRescanRepeatCnt`
+ a| 
+20
+
+
+
+ a| 
+`storageProvider.hostRescanTimeoutSec`
+ a| 
+Impostare un valore alto (ad esempio: 99999)
+
+|===
+Si consiglia inoltre di attivare `StorageProvider.autoResignatureMode` l'opzione.
+
+Per ulteriori informazioni sulla modifica delle impostazioni del provider di archiviazione, fare riferimento alla https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-provider-settings.html["Modificare le impostazioni del provider di storage"] .
+
+
+
+== Impostazioni di storage
+
+Quando si preme un timeout, aumentare i valori di `storage.commandTimeout` e `storage.maxConcurrentCommandCnt` a un valore superiore.
+
+
+NOTE: L'intervallo di timeout specificato è il valore massimo. Non è necessario attendere il raggiungimento del timeout massimo. La maggior parte dei comandi termina entro l'intervallo di timeout massimo impostato.
+
+Per modificare le impostazioni dei provider SAN, consultare la sezione https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-settings.html["Modificare le impostazioni di archiviazione"].

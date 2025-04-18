@@ -1,0 +1,20 @@
+---
+permalink: manage/reports.html 
+sidebar: sidebar 
+keywords:  
+summary: I tool ONTAP per il plug-in VMware vSphere forniscono report su macchine virtuali e datastore. 
+---
+= Report sui tool ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I tool ONTAP per il plug-in VMware vSphere forniscono report su macchine virtuali e datastore. Quando si seleziona l'icona degli strumenti NetApp ONTAP per il plug-in VMware vSphere nella sezione Collegamenti del client vCenter, l'interfaccia utente passa alla pagina Panoramica. Selezionare la scheda rapporti per visualizzare la macchina virtuale e il report degli archivi dati.
+
+Il report sulle macchine virtuali mostra l'elenco delle macchine virtuali rilevate (deve avere almeno un disco da datastore basati sullo storage ONTAP) con metriche di performance. Quando si espande il record della macchina virtuale, vengono visualizzate tutte le informazioni relative al datastore del disco.
+
+Il report sui datastore mostra l'elenco dei tool ONTAP rilevati o riconosciuti per gli archivi dati gestiti VMware vSphere, su cui viene eseguito il provisioning dal back-end dello storage ONTAP, di tutti i tipi con metriche delle performance.
+
+È possibile utilizzare l'opzione Gestisci colonne per nascondere o visualizzare colonne diverse.

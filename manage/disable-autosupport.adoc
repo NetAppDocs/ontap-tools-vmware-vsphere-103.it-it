@@ -1,0 +1,25 @@
+---
+permalink: manage/disable-autosupport.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Quando si configura il sistema di archiviazione per la prima volta, AutoSupport viene attivato per impostazione predefinita. Invia messaggi al supporto tecnico 24 ore dopo l"attivazione.' 
+---
+= Disattiva AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si configura il sistema di archiviazione per la prima volta, AutoSupport viene attivato per impostazione predefinita. Invia messaggi al supporto tecnico 24 ore dopo l'attivazione. Quando disabiliti AutoSupport, non riceverai più supporto e monitoraggio proattivi.
+
+
+NOTE: Si consiglia di tenere attivato AutoSupport. Aiuta a velocizzare il rilevamento e la risoluzione dei problemi. Il sistema raccoglie le informazioni AutoSupport e le memorizza localmente, anche quando è disattivato.
+
+.Fasi
+. Da vCenter Server, aprire la console di manutenzione.
+. Accedere come utente di manutenzione.
+. Immettere 1 per selezionare *Configurazione applicazione*.
+. Immettere 3 per selezionare *Disattiva AutoSupport*.
+. Immettere y nella finestra di dialogo di conferma.
+

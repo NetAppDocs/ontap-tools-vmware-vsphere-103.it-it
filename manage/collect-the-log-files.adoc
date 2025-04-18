@@ -1,0 +1,42 @@
+---
+permalink: manage/collect-the-log-files.html 
+sidebar: sidebar 
+keywords:  
+summary: 'È possibile raccogliere i file di log per gli strumenti ONTAP per VMware vSphere dalle opzioni disponibili negli strumenti ONTAP per l"interfaccia utente grafica \(GUI\) di VMware vSphere. Il supporto tecnico potrebbe richiedere di raccogliere i file di registro per risolvere un problema.' 
+---
+= Raccogliere i file di log
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile raccogliere i file di log per i tool ONTAP per VMware vSphere dalle opzioni disponibili nell'interfaccia utente di ONTAP tools Manager. Il supporto tecnico potrebbe richiedere di raccogliere i file di registro per risolvere un problema.
+
+
+NOTE: La generazione di log da ONTAP Tools Manager include tutti i log per tutte le istanze di vCenter Server. La generazione di log dall'interfaccia utente del client vCenter è prevista per vCenter Server selezionato.
+
+.Fasi
+. Avviare Gestione strumenti ONTAP da un browser Web: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Effettua l'accesso con i tool ONTAP per le credenziali di amministratore di VMware vSphere fornite durante l'implementazione.
+. Selezionare *Log Bundle* dalla barra laterale.
++
+Questa operazione può richiedere alcuni minuti.
+
+. Selezionare *generate* per generare i file di registro.
+. Immettere l'etichetta per il pacchetto di log e selezionare *genera*.
++
+Scaricare il file tar.gz e inviarlo all'assistenza tecnica.
+
+
+
+Per generare il bundle di log utilizzando l'interfaccia utente del client vCenter, procedere come segue:
+
+.Fasi
+. Accedere al client vSphere
+. Dalla home page di vSphere Client, andare a *supporto* > *pacchetto di registrazione* > *genera*.
+. Fornire l'etichetta del bundle di log e generare il bundle di log. È possibile visualizzare l'opzione di download quando vengono generati i file. Il download potrebbe richiedere del tempo.
+
+
+
+NOTE: Il bundle di log generato sostituisce il bundle di log generato negli ultimi 3 giorni o 72 ore.

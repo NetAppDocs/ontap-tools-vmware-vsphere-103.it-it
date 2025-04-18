@@ -1,0 +1,200 @@
+---
+permalink: deploy/prerequisites.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: Prima di implementare gli strumenti ONTAP per VMware vSphere, è necessario conoscere i requisiti di spazio per il pacchetto di distribuzione e alcuni requisiti di base del sistema host. 
+---
+= Prerequisiti per gli strumenti ONTAP per la distribuzione di VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di implementare gli strumenti ONTAP per VMware vSphere, è necessario conoscere i requisiti di spazio per il pacchetto di distribuzione e alcuni requisiti di base del sistema host.
+
+Puoi utilizzare tool ONTAP per VMware vSphere con VMware vCenter Server Virtual Appliance (vCSA). È necessario implementare i tool ONTAP per VMware vSphere su un client vSphere supportato che include il sistema ESXi.
+
+
+
+== Requisiti di sistema
+
+* *Requisiti di spazio per il pacchetto di installazione per nodo*
++
+** 15 GB per le installazioni con thin provisioning
+** 348 GB per installazioni con thick provisioning
+
+
+* *Requisiti di dimensionamento del sistema host* la memoria consigliata in base alle dimensioni di distribuzione è illustrata nella tabella seguente:
+
+
+|===
+
+
+| *Tipo di distribuzione* | *CPU* | *Memoria (GB)* | *Spazio su disco (GB) con thick provisioning* 
+
+
+| Non ha piccolo | 9 | 18 | 350 
+
+
+| Terreno non ha | 13 | 26 | 350 
+
+
+| HA Small (cumulativo di tre nodi) | 27 | 54 | 1050 
+
+
+| Supporto HA (cumulativo di tre nodi) | 39 | 78 | 1050 
+
+
+| HA Large (cumulativo di tre nodi) | 51 | 102 | 1050 
+|===
+
+
+== Requisiti minimi di archiviazione e applicazione
+
+|===
+| Storage, host e applicazioni | Requisiti minimi di versione 
+
+
+| ONTAP | 9.14.1, 9.15.1 e 9.16.0. FAS, ASA A-Series, ASA C-Series, AFF A-Series, AFF C-Series e ASA R2. 
+
+
+| Host ESXi | ESXi 7.0.3 
+
+
+| Server vCenter | VCenter 7.0U3 
+
+
+| Provider VASA | 3,0 
+
+
+| Applicazione OVA | 10,3 
+|===
+L'Interoperability Matrix Tool (IMT) contiene le informazioni più recenti sulle versioni supportate di ONTAP, vCenter Server, gli host ESXi e le applicazioni plug-in.
+
+https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src=IMT["Tool di matrice di interoperabilità"^]
+
+
+
+== Limiti di configurazione per l'implementazione dei tool ONTAP per VMware vSphere
+
+La seguente tabella illustra la configurazione dei tool ONTAP per VMware vSphere.
+
+|===
+
+
+| *Implementazione* | *Tipo* | *Numero di vVol* | *Numero di host* 
+
+
+| Non ha | Piccolo (S) | CIRCA 12K MB | 32 
+
+
+| Non ha | Medio (M) | CIRCA 24K MB | 64 
+
+
+| Alta disponibilità | Piccolo (S) | CIRCA 24K MB | 64 
+
+
+| Alta disponibilità | Medio (M) | circa 50k mb | 128 
+
+
+| Alta disponibilità | Grande (L) | circa 100k mb | 256 [NOTA] il numero di host nella tabella mostra il numero totale di host da più vCenter. 
+|===
+
+
+== Tool ONTAP per VMware vSphere - Storage Replication Adapter (SRA)
+
+La tabella seguente mostra i numeri supportati per istanza di VMware Live Site Recovery utilizzando gli strumenti ONTAP per VMware vSphere.
+
+|===
+| *Dimensione della distribuzione vCenter* | *Piccolo* | *Medio* 
+
+
+| Numero totale di macchine virtuali configurate per la protezione mediante replica basata su array | 2000 | 5000 
+
+
+| Numero totale di gruppi di protezione da replica basati su array | 250 | 250 
+
+
+| Numero totale di gruppi di protezione per piano di ripristino | 50 | 50 
+
+
+| Numero di datastore replicati | 255 | 255 
+
+
+| Numero di macchine virtuali | 4000 | 7000 
+|===
+La tabella seguente mostra il numero di VMware Live Site Recovery e i corrispondenti strumenti ONTAP per le dimensioni della distribuzione di VMware vSphere.
+
+|===
+
+
+| *Numero di istanze di VMware Live Site Recovery* | *Dimensioni di distribuzione degli strumenti ONTAP* 
+
+
+| Fino a 4 | Piccolo 
+
+
+| da 4 a 8 | Medio 
+
+
+| Più di 8 | Grande 
+|===
+Per ulteriori informazioni, fare riferimento a https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/overview/site-recovery-manager-system-requirements/operational-limits-of-site-recovery-manager.html["Limiti operativi di VMware Live Site Recovery"].
+
+
+
+== Requisiti delle porte
+
+Nella tabella seguente sono descritte le porte di rete utilizzate da NetApp e le relative finalità. Assicurarsi che queste porte siano aperte e accessibili per facilitare il corretto funzionamento e la comunicazione all'interno del sistema. Verificare che siano state configurate le configurazioni di rete necessarie per consentire il corretto funzionamento del traffico su queste porte per i servizi associati. A seconda dei criteri di protezione in uso, potrebbe essere necessario configurare firewall o altri dispositivi di protezione per consentire questo traffico all'interno della rete.
+
+|===
+
+
+| *Porta* | *Descrizione* 
+
+
+| 22 (TCP) | Ansible utilizza questa porta SSH per la comunicazione durante il provisioning del cluster. Questa porta è necessaria per funzionalità come la modifica della password utente di manutenzione, i messaggi di stato e per aggiornare i valori su tutti e tre i nodi in caso di configurazione ha. 
+
+
+| 443 (TCP) | Questa è la porta pass-through per le comunicazioni in entrata per il servizio del provider VASA. Il certificato autofirmato del provider VASA e il certificato CA personalizzato sono ospitati su questa porta. 
+
+
+| 8443 (TCP) | Questa porta ospita la documentazione API tramite swagger e l'applicazione dell'interfaccia utente di Manager. 
+
+
+| 2379 (TCP) | Questa è la porta predefinita per le richieste client, ad esempio Get, put, DELETE o Watch for keys nell'archivio valori chiavi etcd. 
+
+
+| 2380 (TCP) | Questa è la porta predefinita per la comunicazione server-server per il cluster etcd utilizzato per l'algoritmo di consenso raft su cui si basa etcd per la replica e la coerenza dei dati. 
+
+
+| 7472 (TCP+UDP) | Questa è la porta di servizio delle metriche prometheus. 
+
+
+| 7946 (TCP+UDP) | Questa porta viene utilizzata per il rilevamento della rete dei container del docker. 
+
+
+| 9083 (TCP) | Questa porta è una porta di servizio utilizzata internamente per il servizio del provider VASA. 
+
+
+| 1162 (UDP) | Questa è la porta dei pacchetti trap SNMP. 
+
+
+| 6443 (TCP) | Fonte: RKE2 nodi agenti. Destinazione: REK2 nodi server. Descrizione: API Kubernetes 
+
+
+| 9345 (TCP) | Fonte: RKE2 nodi agenti. Destinazione: REK2 nodi server. Descrizione: API supervisore REK2 
+
+
+| 8472 (TCP+UDP) | Tutti i nodi devono essere in grado di raggiungere gli altri nodi sulla porta UDP 8472 quando si utilizza VXLAN flanel. Fonte: Tutti e RKE2 i nodi. Destinazione: Tutti e REK2 i nodi. Descrizione: Canal CNI con VXLAN 
+
+
+| 10250 (TCP) | Fonte: Tutti e RKE2 i nodi. Destinazione: Tutti e REK2 i nodi. Descrizione: Kubelet metriche 
+
+
+| 30000-32767 (TCP) | Fonte: Tutti e RKE2 i nodi. Destinazione: Tutti e REK2 i nodi. Descrizione: Intervallo porta NodePort 
+
+
+| 123 (TCP) | Ntpd utilizza questa porta per eseguire la convalida del server ntp. 
+|===

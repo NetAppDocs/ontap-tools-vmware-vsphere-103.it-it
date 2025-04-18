@@ -1,0 +1,59 @@
+---
+permalink: concepts/rbac-vcenter-environment.html 
+sidebar: sidebar 
+keywords: vcenter, vcenter server, vcenter server rbac, rbac environment 
+summary: 'VMware vCenter Server offre una funzionalità RBAC che consente di controllare l"accesso agli oggetti vSphere. Si tratta di una parte importante dei servizi di sicurezza per l"autenticazione e l"autorizzazione centralizzati di vCenter.' 
+---
+= Ambiente vCenter Server RBAC con tool ONTAP per VMware vSphere 10
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+VMware vCenter Server offre una funzionalità RBAC che consente di controllare l'accesso agli oggetti vSphere. Si tratta di una parte importante dei servizi di sicurezza per l'autenticazione e l'autorizzazione centralizzati di vCenter.
+
+
+
+== Immagine di un'autorizzazione vCenter Server
+
+Un'autorizzazione è la base per applicare il controllo degli accessi nell'ambiente vCenter Server. Viene applicato a un oggetto vSphere con un utente o un gruppo incluso nella definizione dell'autorizzazione. Un'illustrazione di alto livello di un'autorizzazione vCenter è riportata nella figura seguente.
+
+image:vc-permission.png["Autorizzazione vCenter"]
+
+
+
+== Componenti di un'autorizzazione vCenter Server
+
+Un'autorizzazione vCenter Server è un pacchetto di diversi componenti che sono associati insieme quando viene creata l'autorizzazione.
+
+
+
+=== Oggetti vSphere
+
+Le autorizzazioni sono associate agli oggetti vSphere, come vCenter Server, host ESXi, macchine virtuali, datastore, data center e cartelle. In base alle autorizzazioni assegnate all'oggetto, vCenter Server determina quali azioni o attività possono essere eseguite sull'oggetto da ciascun utente o gruppo. Per le attività specifiche degli strumenti ONTAP per VMware vSphere, tutte le autorizzazioni vengono assegnate e convalidate a livello di cartella principale o principale di vCenter Server. Per ulteriori informazioni, vedere link:../concepts/rbac-vcenter-use.html["USA RBAC con server vCenter"] .
+
+
+
+=== Privileges e ruoli
+
+Esistono due tipi di vSphere Privileges utilizzati con i tool ONTAP per VMware vSphere 10. Per semplificare le operazioni con RBAC in questo ambiente, gli strumenti ONTAP forniscono ruoli che contengono la Privileges nativa e personalizzata richiesta. Il Privileges include:
+
+* Privilegi vCenter Server nativi
++
+Si tratta del Privileges fornito da vCenter Server.
+
+* Privilegi specifici per i tool ONTAP
++
+Si tratta di un'esclusiva di Privileges personalizzata per i tool ONTAP per VMware vSphere.
+
+
+
+
+
+=== Utenti e gruppi
+
+È possibile definire utenti e gruppi utilizzando Active Directory o l'istanza locale di vCenter Server. Insieme a un ruolo, è possibile creare un'autorizzazione per un oggetto nella gerarchia degli oggetti vSphere. L'autorizzazione concede l'accesso in base all'Privileges nel ruolo associato. Tenere presente che i ruoli non vengono assegnati direttamente agli utenti in isolamento. Gli utenti e i gruppi ottengono invece l'accesso a un oggetto tramite Role Privileges come parte dell'autorizzazione più grande di vCenter Server.

@@ -1,0 +1,79 @@
+---
+permalink: manage/maintenance-console.html 
+sidebar: sidebar 
+keywords:  
+summary: È possibile gestire applicazioni, sistemi e configurazioni di rete utilizzando la console di manutenzione degli strumenti ONTAP. È possibile modificare la password di amministratore e la password di manutenzione. È inoltre possibile generare pacchetti di supporto, impostare diversi livelli di log, visualizzare e gestire le configurazioni TLS e avviare la diagnostica remota. 
+---
+= Panoramica dei tool ONTAP per la console di manutenzione VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile gestire applicazioni, sistemi e configurazioni di rete utilizzando la console di manutenzione degli strumenti ONTAP. È possibile modificare la password di amministratore e la password di manutenzione. È inoltre possibile generare pacchetti di supporto, impostare diversi livelli di log, visualizzare e gestire le configurazioni TLS e avviare la diagnostica remota.
+
+È necessario disporre di strumenti VMware installati dopo la distribuzione degli strumenti ONTAP per VMware vSphere per accedere alla console di manutenzione.  `maint`Per accedere alla console di manutenzione degli strumenti ONTAP, è necessario utilizzare come nome utente e password configurati durante la distribuzione. Si consiglia di utilizzare *nano* per modificare i file in manutenzione o nella console di login principale.
+
+
+NOTE: È necessario impostare una password per l' `diag`utente durante l'attivazione della diagnostica remota.
+
+Per accedere alla console di manutenzione, utilizzare la scheda *Riepilogo* degli strumenti ONTAP per VMware vSphere distribuiti. Quando si seleziona image:../media/launch-maintenance-console.gif["Pulsante Play (Riproduci)"], viene avviata la console di manutenzione.
+
+|===
+
+
+| *Menu console* | *Opzioni* 
+
+
+ a| 
+Configurazione dell'applicazione
+ a| 
+. Visualizza il riepilogo dello stato del server
+. Modificare il livello di REGISTRAZIONE per servizi provider VASA e servizi SRA
+. Disattiva AutoSupport
+. Aggiorna URL proxy AutoSupport
+
+
+
+
+ a| 
+Configurazione del sistema
+ a| 
+. Riavviare la macchina virtuale
+. Arrestare la macchina virtuale
+. Modificare la password utente "maint"
+. Modificare il fuso orario
+. Aggiungere un nuovo server NTP
+. Aumentare la dimensione del disco jail (/jail)
+. Eseguire l'upgrade
+. Installare VMware Tools
+
+
+
+
+ a| 
+Configurazione di rete
+ a| 
+. Visualizzare le impostazioni dell'indirizzo IP
+. Visualizzare le impostazioni di ricerca dei nomi di dominio
+. Modificare le impostazioni di ricerca dei nomi di dominio
+. Visualizza percorsi statici
+. Modificare i percorsi statici
+. Eseguire il commit delle modifiche
+. Eseguire il ping di un host
+. Ripristinare le impostazioni predefinite
+
+
+
+
+ a| 
+Supporto e diagnostica
+ a| 
+. Accedere alla shell di diagnostica
+. Abilitare l'accesso remoto alla diagnostica
+. Fornisci le credenziali vCenter per il backup
+. Esegui backup
+
+
+|===

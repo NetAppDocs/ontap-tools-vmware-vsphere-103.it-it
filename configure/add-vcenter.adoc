@@ -1,0 +1,32 @@
+---
+permalink: configure/add-vcenter.html 
+sidebar: sidebar 
+keywords:  
+summary: Aggiungi le istanze di vCenter Server ai tool ONTAP per VMware vSphere per configurare, gestire e proteggere i datastore virtuali nel tuo ambiente vCenter Server. 
+---
+= Aggiungere istanze di vCenter Server
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Aggiungi le istanze di vCenter Server ai tool ONTAP per VMware vSphere per configurare, gestire e proteggere i datastore virtuali nel tuo ambiente vCenter Server.
+
+*A proposito di questa attività*
+
+Attraverso l'integrazione con vCenter, gli strumenti ONTAP ti consentono di eseguire task di storage come provisioning, snapshot e data Protection direttamente dal client vSphere, eliminando la necessità di passare a console di gestione dello storage separate.
+
+.Fasi
+. Aprire un browser Web e accedere all'URL: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Effettua l'accesso con i tool ONTAP per le credenziali di amministratore di VMware vSphere fornite durante l'implementazione.
+. Selezionare *vCenters* > *Add* per integrare le istanze di vCenter Server. Fornisci l'indirizzo IP vCenter o il nome host, il nome utente, la password e i dettagli della porta.
+
+
+L'aggiunta di un'istanza di vCenter Server agli strumenti ONTAP attiva automaticamente le seguenti azioni:
+
+* Il plug-in del client vCenter è registrato come plug-in remoto.
+* All'istanza di vCenter Server vengono applicate le Privileges personalizzate per i plug-in e le API.
+* Per gestire gli utenti vengono creati ruoli personalizzati.
+* Il plug-in viene visualizzato come collegamento nell'interfaccia utente di vSphere.
+

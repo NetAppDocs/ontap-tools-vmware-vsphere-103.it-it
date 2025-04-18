@@ -1,0 +1,46 @@
+---
+permalink: configure/dashboard-overview.html 
+sidebar: sidebar 
+keywords: user roles 
+summary: 'Quando si seleziona l"icona degli strumenti ONTAP per il plug-in VMware vSphere nella sezione Collegamenti del client vCenter, l"interfaccia utente passa alla pagina di panoramica. Questa pagina agisce come la dashboard che fornisce il riepilogo dei tool ONTAP per il plug-in VMware vSphere.' 
+---
+= Panoramica dei tool ONTAP per la dashboard di VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si seleziona l'icona degli strumenti ONTAP per il plug-in VMware vSphere nella sezione Collegamenti del client vCenter, l'interfaccia utente passa alla pagina di panoramica. Questa pagina agisce come la dashboard che fornisce il riepilogo dei tool ONTAP per il plug-in VMware vSphere.
+
+Nel caso della configurazione della modalità di collegamento avanzata (ELM), viene visualizzato il menu a discesa vCenter Server SELECT ed è possibile selezionare un vCenter Server desiderato per visualizzare i dati pertinenti. Questo menu a discesa è disponibile per tutte le altre viste di elenco del plugin. La selezione di vCenter Server effettuata in una pagina persiste nelle schede del plug-in. image:../media/remote-plugin-dashboard.png["Panoramica della dashboard"]
+
+Dalla pagina di panoramica, è possibile eseguire l'azione *rilevamento*. L'azione di Discovery esegue il rilevamento a livello di vCenter per rilevare eventuali backend storage, host, datastore e stato/relazioni di protezione aggiunti o aggiornati di recente. È possibile eseguire una ricerca su richiesta delle entità senza dover attendere la ricerca pianificata.
+
+
+NOTE: Il pulsante di azione viene attivato solo se si dispone dei privilegi necessari per eseguire l'azione di ricerca.
+
+Una volta inviata la richiesta di rilevamento, è possibile tenere traccia dell'avanzamento dell'azione nel pannello attività recenti.
+
+Il cruscotto ha diverse schede che mostrano diversi elementi del sistema. La tabella seguente mostra le diverse schede e ciò che esse rappresentano.
+
+|===
+
+
+| *Carta* | *Descrizione* 
+
+
+| Stato | La scheda Stato mostra il numero di backend di archiviazione e lo stato di integrità generale dei backend di archiviazione e del provider VASA. Lo stato dei backend di archiviazione mostra *integro* quando lo stato di tutti i backend di archiviazione è normale e mostra *non integro* se uno dei backend di archiviazione presenta un problema (stato sconosciuto/irraggiungibile/danneggiato). Selezionare la descrizione comando per aprire i dettagli di stato dei backend di archiviazione. È possibile selezionare qualsiasi backend di storage per ulteriori dettagli. Il collegamento *altri stati provider VASA* mostra lo stato corrente del provider VASA registrato in vCenter Server. 
+
+
+| Backend di archiviazione - capacità | Questa scheda mostra la capacità aggregata utilizzata e disponibile di tutti i backend storage per l'istanza di vCenter Server selezionata. Nel caso dei sistemi di storage ASA R2, i dati sulla capacità non vengono mostrati in quanto si tratta di un sistema disaggregato. 
+
+
+| Macchine virtuali | Questa scheda mostra le 10 macchine virtuali principali ordinate in base alla metrica delle prestazioni. È possibile selezionare l'intestazione per ottenere le 10 macchine virtuali principali per la metrica selezionata in ordine crescente o decrescente. Le modifiche di ordinamento e filtraggio apportate alla scheda persistono fino a quando non si modifica o si cancella la cache del browser. 
+
+
+| Datastore | Questa scheda mostra i 10 principali datastore ordinati in base a una metrica di prestazioni. È possibile selezionare l'intestazione per ottenere i primi 10 datastore per la metrica selezionata ordinati in ordine crescente o decrescente. Le modifiche di ordinamento e filtraggio apportate alla scheda persistono fino a quando non si modifica o si cancella la cache del browser. È disponibile un menu a discesa tipo datastore per selezionare il tipo di datastore: NFS, VMFS o vVol. 
+
+
+| Scheda di conformità host ESXi | Questa scheda mostra lo stato di conformità generale di tutti gli host ESXi (per il vCenter selezionato) rispetto alle impostazioni dell'host NetApp consigliate per gruppo/categoria di impostazioni. È possibile selezionare il collegamento *Applica impostazioni consigliate* per applicare le impostazioni consigliate. È possibile selezionare lo stato di conformità degli host per visualizzare l'elenco degli host. 
+|===

@@ -1,0 +1,31 @@
+---
+permalink: manage/delete-deployment.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: 'Dopo aver eliminato gli strumenti ONTAP per la distribuzione di VMware vSphere, è necessario ripulire i volumi flessibili creati durante la distribuzione. Se hai utilizzato un cluster ONTAP dedicato per le implementazioni, dovresti pulire quei volumi perché l"implementazione crea molti volumi complessi, che non sono utilizzati, con un conseguente calo delle performance.' 
+---
+= Rimuovere i volumi FlexVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se utilizzi un cluster ONTAP dedicato per i tool ONTAP per l'implementazione di VMware, creerai molti volumi FlexVol non utilizzati. Dopo aver rimosso i tool ONTAP per VMware vSphere, occorre rimuovere i volumi FlexVol per evitare possibili impatti sulle performance.
+
+.Fasi
+. Determina i tool ONTAP per il tipo di implementazione VMware vSphere dalla macchina virtuale del nodo primario.
++
+_cat /opt/netapp/meta/ansible_vars.yaml | grep -i protocol_
+
++
+Se si tratta di una distribuzione iSCSI, è necessario eliminare anche gli igroup.
+
+. Ottieni l'elenco di FlexVol Volumes.
++
+_Kubectl describe persistentvolumes | grep internalName | awk -F'=' '{print $2}'_
+
+. Rimuovere le macchine virtuali da vCenter Server. Fare riferimento alla https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-virtual-machinesvsphere-vm-admin/adding-and-removing-virtual-machinesvsphere-vm-admin.html#GUID-376174FE-F936-4BE4-B8C2-48EED42F110B-en["Rimuovere e registrare nuovamente le macchine virtuali e i modelli VM"].
+. Elimina i volumi FlexVol da Gestione sistema di ONTAP. Fare riferimento alla https://docs.netapp.com/us-en/ontap/volumes/delete-flexvol-task.html["Eliminare un volume FlexVol"]. Nel comando CLI per eliminare un volume, fornire il nome esatto dei volumi FlexVol.
+. Eliminare gli igroup SAN dal sistema di storage ONTAP in caso di distribuzione iSCSI. Fare riferimento alla https://docs.netapp.com/us-en/ontap/san-admin/manage-san-initiators-task.html["Visualizza e gestisci GLI iniziatori SAN e igroups"].
+

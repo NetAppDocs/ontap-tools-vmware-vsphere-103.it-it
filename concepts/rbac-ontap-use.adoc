@@ -1,0 +1,92 @@
+---
+permalink: concepts/rbac-ontap-use.html 
+sidebar: sidebar 
+keywords: ontap rbac, use ontap rbac 
+summary: 'Esistono diversi aspetti dei tool ONTAP per l"implementazione RBAC di VMware vSphere 10 con ONTAP che è necessario prendere in considerazione prima di utilizzarlo in un ambiente di produzione.' 
+---
+= USA RBAC ONTAP con tool ONTAP per VMware vSphere 10
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esistono diversi aspetti dei tool ONTAP per l'implementazione RBAC di VMware vSphere 10 con ONTAP che è necessario prendere in considerazione prima di utilizzarlo in un ambiente di produzione.
+
+
+
+== Panoramica del processo di configurazione
+
+I tool ONTAP per VMware vSphere 10 includono il supporto per la creazione di un utente ONTAP con un ruolo personalizzato. Le definizioni sono contenute in un file JSON che è possibile caricare nel cluster ONTAP. È possibile creare l'utente e personalizzare il ruolo in base all'ambiente e alle esigenze di protezione.
+
+Le fasi principali della configurazione sono descritte in alto di seguito. Per link:../configure/configure-user-role-and-privileges.html["Configurare i ruoli e i privilegi degli utenti ONTAP"]ulteriori dettagli, fare riferimento a.
+
+.1. Preparatevi
+È necessario disporre delle credenziali di amministratore per ONTAP Tools Manager e per il cluster ONTAP.
+
+.2. Scaricare il file di definizione JSON
+Dopo aver effettuato l'accesso all'interfaccia utente di ONTAP Tools Manager, è possibile scaricare il file JSON contenente le definizioni RBAC.
+
+.3. Creare un utente ONTAP con un ruolo
+Dopo aver effettuato l'accesso a System Manager, è possibile creare l'utente e il ruolo:
+
+. Selezionare *Cluster* sulla sinistra, quindi *Settings*.
+. Scorrere fino a *utenti e ruoli* e fare clic su `-->`.
+. Selezionare *Aggiungi* in *utenti* e selezionare *prodotti di virtualizzazione*.
+. Selezionare il file JSON sulla workstation locale e caricarlo.
+
+
+.4. Configurare il ruolo
+Come parte della definizione del ruolo, è necessario prendere diverse decisioni amministrative. Per ulteriori informazioni, vedere<<Configurare il ruolo utilizzando System Manager>>.
+
+
+
+== Configurare il ruolo utilizzando System Manager
+
+Dopo aver iniziato a creare un nuovo utente e ruolo con System Manager e aver caricato il file JSON, è possibile personalizzare il ruolo in base all'ambiente e alle esigenze.
+
+
+
+=== Configurazione principale di utenti e ruoli
+
+Le definizioni dei RBAC sono composte da diverse funzionalità dei prodotti, tra cui combinazioni di VSC, VASA Provider e SRA. Devi selezionare l'ambiente o gli ambienti in cui hai bisogno di supporto RBAC. Ad esempio, se si desidera che i ruoli supportino la funzionalità plug-in remoto, selezionare VSC. È inoltre necessario scegliere il nome utente e la password associata.
+
+
+
+=== Privilegi
+
+Le Privileges del ruolo sono organizzate in quattro serie in base al livello di accesso necessario allo storage ONTAP. Le Privileges su cui si basano i ruoli includono:
+
+* Discovery (rilevamento)
++
+Questo ruolo consente di aggiungere sistemi storage.
+
+* Creare storage
++
+Questo ruolo consente di creare storage. Include inoltre tutte le Privileges associate al ruolo di rilevamento.
+
+* Modificare l'archiviazione
++
+Questo ruolo consente di modificare lo storage. Include inoltre tutta la Privileges associata al rilevamento e alla creazione dei ruoli storage.
+
+* Distruzione dello storage
++
+Questo ruolo consente di distruggere lo storage. Include inoltre tutta la Privileges associata al rilevamento, la creazione di storage e la modifica dei ruoli storage.
+
+
+
+
+
+=== Generare l'utente con un ruolo
+
+Dopo aver selezionato le opzioni di configurazione per il proprio ambiente, fare clic su *Aggiungi* e ONTAP crea l'utente e il ruolo. Il nome del ruolo generato è una concatenazione dei seguenti valori:
+
+* Valore del prefisso costante definito nel file JSON (ad esempio "OTV_10")
+* Capacità del prodotto selezionata
+* Elenco dei set di privilegi.
+
+
+.Esempio
+`OTV_10_VSC_Discovery_Create`
+
+Il nuovo utente verrà aggiunto all'elenco nella pagina "utenti e ruoli". Si noti che sono supportati entrambi i metodi di accesso utente HTTP e ONTAPI.

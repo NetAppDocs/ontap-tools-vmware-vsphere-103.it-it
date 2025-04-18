@@ -1,0 +1,65 @@
+---
+permalink: protect/configure-array-manager.html 
+sidebar: sidebar 
+keywords:  
+summary: 'È possibile configurare Storage Replication Adapter \(SRA\) utilizzando la procedura guidata Array Manager di VMware Live Site Recovery per abilitare le interazioni tra VMware Live Site Recovery e le Storage Virtual Machine \(SVM\).' 
+---
+= Configurare SRA utilizzando Array Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare Storage Replication Adapter (SRA) utilizzando la procedura guidata Array Manager di VMware Live Site Recovery per abilitare le interazioni tra VMware Live Site Recovery e le Storage Virtual Machine (SVM).
+
+.Prima di iniziare
+* È necessario aver abbinato i siti protetti e i siti di ripristino in VMware Live Site Recovery.
+* Prima di configurare il gestore array, è necessario aver configurato lo spazio di archiviazione integrato.
+* Dovresti aver configurato e replicato le relazioni SnapMirror tra i siti protetti e i siti di recovery.
+* Dovresti aver abilitato le LIF di gestione SVM per l'abilitazione della multi-tenancy.
+
+
+SRA supporta la gestione a livello di cluster e la gestione a livello di SVM. Aggiungendo lo storage a livello di cluster è possibile rilevare ed eseguire operazioni su tutte le SVM del cluster. Se si aggiunge storage a livello di SVM, è possibile gestire solo la SVM specifica.
+
+.Fasi
+. In VMware Live Site Recovery, selezionare *Array Managers* > *Add Array Manager*.
+. Immettere le seguenti informazioni per descrivere l'array in VMware Live Site Recovery:
++
+.. Immettere un nome per identificare il gestore array nel campo *Display Name*.
+.. Nel campo *tipo SRA*, selezionare *scheda di replica storage NetApp per ONTAP*.
+.. Inserire le informazioni per la connessione al cluster o alla SVM:
++
+*** Se si sta effettuando la connessione a un cluster, inserire la LIF di gestione del cluster.
+*** Se ci si connette direttamente a una SVM, inserire l'indirizzo IP della LIF di gestione SVM.
++
+
+NOTE: Durante la configurazione dell'array manager occorre utilizzare la stessa connessione (indirizzo IP) per il sistema storage utilizzato per integrare il sistema storage nei tool ONTAP per VMware vSphere. Ad esempio, se la configurazione del gestore degli array ha un ambito SVM, occorre aggiungere lo storage nei tool ONTAP per VMware vSphere a livello di SVM.
+
+
+
+.. Se si sta effettuando la connessione a un cluster, inserire il nome della SVM nel campo *SVM name* (Nome SVM).
++
+È anche possibile lasciare vuoto questo campo.
+
+.. Inserire i volumi da rilevare nel campo *Volume include list* (elenco di inclusione del volume).
++
+È possibile inserire il volume di origine nel sito protetto e il volume di destinazione replicato nel sito di ripristino.
+
++
+Ad esempio, se si desidera rilevare il volume src_vol1 che si trova in una relazione SnapMirror con il volume dst_vol1, è necessario specificare src_vol1 nel campo del sito protetto e dst_vol1 nel campo del sito di ripristino.
+
+.. *(opzionale)* inserire i volumi da escludere dal rilevamento nel campo *elenco esclusioni volume*.
++
+È possibile inserire il volume di origine nel sito protetto e il volume di destinazione replicato nel sito di ripristino.
+
++
+Ad esempio, se si desidera escludere il volume _src_vol1_ che si trova in una relazione SnapMirror con il volume _dst_vol1_, è necessario specificare _src_vol1_ nel campo del sito protetto e _dst_vol1_ nel campo del sito di ripristino.
+
+
+
+. Selezionare *Avanti*.
+. Verificare che l'array sia rilevato e visualizzato nella parte inferiore della finestra Add Array Manager (Aggiungi array) e selezionare *Finish* (fine).
+
+
+È possibile seguire gli stessi passaggi per il sito di ripristino utilizzando gli indirizzi IP e le credenziali di gestione SVM appropriati. Nella schermata Enable Array Pairs (Abilita coppie di array) della procedura guidata Add Array Manager (Aggiungi gestore array), verificare che sia selezionata la coppia di array corretta e che sia visualizzata come pronta per essere abilitata.

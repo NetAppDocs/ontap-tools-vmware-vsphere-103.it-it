@@ -1,0 +1,64 @@
+---
+permalink: release-notes/whats-new.html 
+sidebar: sidebar 
+keywords: 'what"s new, release notes, 10.3, ONTAP tools for VMware vSphere' 
+summary: Scopri le nuove funzionalità disponibili nei tool ONTAP per VMware vSphere 10,3. 
+---
+= Novità dei tool ONTAP per VMware vSphere 10,3
+:allow-uri-read: 
+
+
+[role="lead"]
+Scopri le nuove funzionalità disponibili nei tool ONTAP per VMware vSphere 10,3.
+
+[cols="30%,70%"]
+|===
+| Aggiornare | Descrizione 
+
+
+ a| 
+Supporto per nuove versioni di piattaforme e applicazioni
+ a| 
+I tool ONTAP per VMware vSphere 10,3 ora supportano le seguenti versioni di piattaforme e applicazioni:
+
+* ONTAP 9.16.0 e versioni successive
+* VMware vSphere 8,0 U3
+* VMware Live Site Recovery 9,0
+
+
+
+
+ a| 
+Facilità di implementazione
+ a| 
+Da oggi puoi implementare i tool ONTAP per VMware vSphere 10,3 con requisiti minimi in un singolo cluster a nodo, per poi aggiornarlo a un'alta disponibilità (ha) o a un'implementazione multi-nodo.
+
+
+
+ a| 
+Provisioning e configurazione perfetti
+ a| 
+I tool ONTAP per VMware vSphere 10,3 hanno rimosso le dipendenze associate a Trident e ora utilizzano il provisioner di storage dinamico per consentire provisioning e configurazione perfetti.
+
+
+
+ a| 
+Sicurezza avanzata per l'autenticazione delle API REST
+ a| 
+Gli strumenti ONTAP per VMware vSphere 10,3 si affidano ora ai certificati firmati CA per le API REST e l'interfaccia utente degli strumenti ONTAP per garantire una maggiore sicurezza.
+
+
+
+ a| 
+Supporto per i sistemi ASA R2
+ a| 
+I tool ONTAP per VMware vSphere 10,3 supportano il provisioning dei datastore VMFS sui sistemi ASA R2 per proteggere i datastore VMFS con la sincronizzazione attiva di SnapMirror e il ripristino dei siti live di SRA/VMware.
+
+
+
+ a| 
+Osservabilità migliorata
+ a| 
+I tool ONTAP per VMware vSphere 10,3 estendono il supporto delle metriche di osservabilità per i datastore VMFS e vVol e per le rispettive macchine virtuali.
+
+|===

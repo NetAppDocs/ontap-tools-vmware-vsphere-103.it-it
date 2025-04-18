@@ -1,0 +1,29 @@
+---
+permalink: manage/remove-storage-from-a-vvols-datastore.html 
+sidebar: sidebar 
+keywords: Remove vVol datastore 
+summary: 'L"azione Elimina archivio dati elimina il datastore quando non sono presenti vVol nel datastore selezionato.' 
+---
+= Restringere il datastore vVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'azione Elimina archivio dati elimina il datastore quando non sono presenti vVol nel datastore selezionato.
+
+
+NOTE: L'operazione del datastore Shrink vVol non è supportata per il datastore vVol basato su ASA R2.
+
+.Fasi
+. Dalla home page di vSphere Client, selezionare *host e cluster*.
+. Nel riquadro di navigazione, selezionare il centro dati che contiene l'archivio dati.
+. Fare clic con il pulsante destro del mouse sul datastore vVol e selezionare *Strumenti NetApp ONTAP* > *Rimuovi storage dal datastore*.
+. Selezionare i volumi che non dispongono di vVol e selezionare *Rimuovi*.
++
+
+NOTE: L'opzione per selezionare il volume su cui risiedono i vVol è disattivata.
+
+. Nella finestra pop-up *Rimuovi storage*, seleziona la casella di controllo *Elimina volumi dal cluster ONTAP* per eliminare i volumi dal datastore e dallo storage ONTAP e seleziona *Elimina*.
+

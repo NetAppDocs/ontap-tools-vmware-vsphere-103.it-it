@@ -1,0 +1,31 @@
+---
+permalink: protect/verify-the-replicated-storage-environment.html 
+sidebar: sidebar 
+keywords:  
+summary: 'È necessario verificare che il sito protetto e il sito di ripristino siano associati correttamente dopo aver configurato l"adattatore di replica archivio \(SRA\). Il sistema storage replicato deve essere raggiungibile sia dal sito protetto che dal sito di recovery.' 
+---
+= Verificare i sistemi storage replicati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario verificare che il sito protetto e il sito di ripristino siano associati correttamente dopo la configurazione dell'adattatore di replica dello storage (SRA). Il sistema storage replicato deve essere raggiungibile sia dal sito protetto che dal sito di recovery.
+
+*Prima di iniziare*
+
+* È necessario aver configurato il sistema di archiviazione.
+* È necessario abbinare il sito protetto e il sito di ripristino utilizzando il gestore dell'array VMware Live Site Recovery.
+* Prima di eseguire l'operazione di test failover e di failover per SRA, è necessario aver attivato la licenza FlexClone e la licenza SnapMirror.
+* È necessario disporre degli stessi criteri e pianificazioni SnapMirror sui siti di origine e destinazione.
+
+
+.Fasi
+. Accedere al server vCenter.
+. Accedere a *Site Recovery* > *Array Based Replication*.
+. Selezionare la coppia di array richiesta e verificare i dettagli corrispondenti.
++
+I sistemi di archiviazione devono essere rilevati nel sito protetto e nel sito di ripristino con lo stato "`abilitato'".
+
+

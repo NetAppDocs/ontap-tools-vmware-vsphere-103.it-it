@@ -1,0 +1,98 @@
+---
+permalink: manage/storage-backend.html 
+sidebar: sidebar 
+keywords:  
+summary: I backend dello storage sono sistemi utilizzati dagli host ESXi per lo storage dei dati. 
+---
+= Gestire i back-end dello storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I backend dello storage sono sistemi utilizzati dagli host ESXi per lo storage dei dati.
+
+
+
+== Rileva lo storage
+
+È possibile eseguire il rilevamento di un backend storage on-demand senza attendere un rilevamento pianificato per aggiornare i dettagli dello storage.
+
+Segui i passaggi riportati di seguito per scoprire i backend dello storage.
+
+.Fasi
+. Accedere al client vSphere
+. Nella pagina Collegamenti, selezionare *NetApp ONTAP tools* nella sezione dei plug-in.
+. Nel riquadro sinistro degli strumenti di ONTAP, accedere a *backend di archiviazione* e selezionare un backend di archiviazione.
+. Selezionare il menu ellissi verticali e selezionare *trova memoria*
+
+
+È possibile tenere traccia dell'avanzamento nel pannello attività recenti.
+
+
+
+== Modificare i backend di archiviazione
+
+Per modificare un backend di archiviazione, attenersi alla procedura descritta in questa sezione.
+
+. Accedere al client vSphere
+. Nella pagina Collegamenti, selezionare *NetApp ONTAP tools* nella sezione dei plug-in.
+. Nel riquadro sinistro degli strumenti di ONTAP, accedere a *backend di archiviazione* e selezionare un backend di archiviazione.
+. Selezionare il menu ellissi verticali e selezionare *Modifica* per modificare le credenziali o il nome della porta. È possibile tenere traccia dell'avanzamento nel pannello attività recenti.
+
+
+È possibile eseguire l'operazione di modifica per i cluster ONTAP globali utilizzando ONTAP Tools Manager seguendo la procedura riportata di seguito.
+
+. Avviare Gestione strumenti ONTAP da un browser Web: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Effettua l'accesso con i tool ONTAP per le credenziali di amministratore di VMware vSphere fornite durante l'implementazione.
+. Seleziona i backend di storage dalla barra laterale.
+. Selezionare il backend di archiviazione che si desidera modificare.
+. Selezionare il menu ellissi verticali e selezionare *Modifica*.
+. È possibile modificare le credenziali o la porta. Immettere *Username* e *Password* per modificare il backend di archiviazione.
+
+
+
+
+== Rimuovere i backend di stoccaggio
+
+Prima di rimuovere il backend dello storage, occorre eliminare tutti gli archivi dati collegati al back-end dello storage. Per rimuovere un backend dello storage, procedere come segue.
+
+. Accedere al client vSphere
+. Nella pagina Collegamenti, selezionare *NetApp ONTAP tools* nella sezione dei plug-in.
+. Nel riquadro sinistro degli strumenti di ONTAP, accedere a *backend di archiviazione* e selezionare un backend di archiviazione.
+. Selezionare il menu ellissi verticali e selezionare *Rimuovi*. Assicurarsi che lo storage backend non contenga datastore. È possibile tenere traccia dell'avanzamento nel pannello attività recenti.
+
+
+Puoi eseguire l'operazione di rimozione per i cluster ONTAP globali usando ONTAP tools Manager.
+
+. Avviare Gestione strumenti ONTAP da un browser Web: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Effettua l'accesso con i tool ONTAP per le credenziali di amministratore di VMware vSphere fornite durante l'implementazione.
+. Selezionare *backend di archiviazione* dalla barra laterale.
+. Selezionare il backend di archiviazione che si desidera rimuovere
+. Selezionare il menu ellissi verticali e selezionare *Rimuovi*.
+
+
+
+
+== Drill-down del backend dello storage
+
+La pagina del backend di archiviazione elenca tutti i backend di archiviazione. Puoi eseguire operazioni di rilevamento dello storage, modifica e rimozione sui backend dello storage aggiunti, non su una singola SVM figlio sotto il cluster.
+
+Selezionando il cluster padre o il figlio nel back-end dello storage, è possibile visualizzare il riepilogo generale del componente. Selezionando il cluster padre, sarà disponibile il menu a discesa delle azioni da cui è possibile eseguire le operazioni di rilevamento, modifica e rimozione.
+
+La pagina di riepilogo fornisce i seguenti dettagli:
+
+* Stato del backend dello storage
+* Informazioni sulla capacità
+* Informazioni di base sulla macchina virtuale
+* Informazioni di rete quali l'indirizzo IP e la porta della rete. Per la SVM secondaria, le informazioni saranno identiche al back-end dello storage di origine.
+* Privilegi consentiti e limitati per il backend di archiviazione. Per la SVM secondaria, le informazioni saranno identiche al back-end dello storage di origine. I privilegi vengono visualizzati solo nei backend di storage basati su cluster. Se Aggiungi SVM come back-end dello storage, le informazioni sui privilegi non verranno visualizzate.
+* La vista dettagliata del cluster di ASA R2 non include la scheda dei Tier locali quando la proprietà disaggregata viene impostata su "true" per la SVM o il cluster.
+* Per i sistemi SVM ASA R2, il portlet della capacità non è mostrato. Il portale della capacità è richiesto solo quando la proprietà disaggregata è impostata su "true" per la SVM o il cluster.
+* Per i sistemi ASA R2 SVM, la sezione delle informazioni di base mostra il tipo di piattaforma.
+
+
+La scheda interfaccia fornisce informazioni dettagliate sull'interfaccia.
+
+La scheda livelli locali fornisce informazioni dettagliate sull'elenco aggregato.
