@@ -81,6 +81,9 @@ NOTE: Non memorizzare mai i tool ONTAP per la macchina virtuale VMware vSphere n
 
 NOTE: Pure IPv6 non è supportato. La modalità mista è supportata con VLAN contenente indirizzi IPv6 e IPv4.
 
+** L'indirizzo IP degli strumenti ONTAP è l'interfaccia principale per la comunicazione con gli strumenti ONTAP.
+** IPv4 è il componente dell'indirizzo IP della configurazione del nodo, che può essere utilizzato per abilitare la shell diagnostica e l'accesso SSH sul nodo ai fini del debug e della manutenzione.
+** L'indirizzo IP di interconnessione dei nodi viene utilizzato per la comunicazione interna.
 
 
 . Quando si utilizza la versione vCenter Server 8.0.3, nella finestra *Customize hardware* (Personalizza hardware*), abilitare le opzioni *CPU hot add* e *Memory hot plug* per consentire la funzionalità ha.

@@ -63,7 +63,7 @@ Utilizzare il seguente foglio di lavoro per raccogliere le informazioni necessar
 | Indirizzo IP per l'applicazione ONTAP Tools |  
 
 
-| Indirizzo IP di interconnessione dei nodi per la comunicazione tra nodi |  
+| Indirizzo IP di interconnessione dei nodi per la comunicazione interna |  
 
 
 | Nome host DNS per il primo nodo |  
