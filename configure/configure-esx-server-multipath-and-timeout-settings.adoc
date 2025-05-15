@@ -50,23 +50,14 @@ Utilizzando gli strumenti ONTAP per VMware vSphere, è possibile impostare timeo
 
 === Impostazioni adattatore HBA/CNA
 
-Consente di impostare le impostazioni di timeout dell'HBA consigliate per i sistemi di archiviazione NetApp.
+Imposta i seguenti parametri sui valori predefiniti:
 
-|===
-| Parametri | Impostare questo valore su... 
-
-
-| Disk.QFullSampleSize | 32 per tutte le configurazioni. L'impostazione di questo valore aiuta a prevenire gli errori di i/O. 
-
-
-| Disk.QFullThreshold | 8 per tutte le configurazioni. L'impostazione di questo valore aiuta a prevenire gli errori di i/O. 
+* Disk.QFullSampleSize
+* Disk.QFullThreshold
+* Timeout HBA FC Emulex
+* Timeout HBA FC QLogic
 
 
-| Timeout HBA FC Emulex | Valore predefinito. 
-
-
-| Timeout HBA FC QLogic | Valore predefinito. 
-|===
 
 
 === Impostazioni MPIO
