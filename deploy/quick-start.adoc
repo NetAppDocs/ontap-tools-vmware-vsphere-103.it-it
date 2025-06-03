@@ -64,9 +64,9 @@ Aggiungi i backend dello storage locale con credenziali cluster o SVM utilizzand
 * link:../configure/associate-storage-backend.html["Associare il backend dello storage a un'istanza di vCenter Server"]
 
 
-.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Sei"] Aggiornare i certificati se si utilizzano più vCenter Server
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Sei"] Aggiorna i certificati se stai lavorando con più istanze di vCenter Server
 [role="quick-margin-para"]
-Quando si utilizzano più vCenter Server, aggiornare il certificato autofirmato a un certificato firmato da un'autorità di certificazione (CA).
+Quando si lavora con più istanze di vCenter Server, aggiornare il certificato autofirmato a un certificato firmato da un'autorità di certificazione (CA).
 
 [role="quick-margin-list"]
 * link:../manage/certificate-manage.html["Gestire i certificati"]

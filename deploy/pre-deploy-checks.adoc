@@ -60,10 +60,10 @@ Utilizzare il seguente foglio di lavoro per raccogliere le informazioni necessar
 | Requisito | Il tuo valore 
 
 
-| Indirizzo IP per l'applicazione ONTAP Tools |  
+| Indirizzo IP per l'applicazione degli strumenti ONTAP. Questo è l'indirizzo IP per accedere all'interfaccia web degli strumenti ONTAP. |  
 
 
-| Indirizzo IP di interconnessione dei nodi per la comunicazione interna |  
+| Indirizzo IP virtuale degli strumenti ONTAP per le comunicazioni interne. Questo indirizzo IP viene utilizzato per le comunicazioni interne in una configurazione con più istanze degli strumenti ONTAP. Questo indirizzo IP non deve essere uguale all'indirizzo IP dell'applicazione degli strumenti ONTAP. |  
 
 
 | Nome host DNS per il primo nodo |  
@@ -78,7 +78,7 @@ Utilizzare il seguente foglio di lavoro per raccogliere le informazioni necessar
 | Dominio di ricerca DNS |  
 
 
-| Indirizzo IPv4 per il nodo primario |  
+| Indirizzo IPv4 per il primo nodo. È un indirizzo IPv4 univoco per l'interfaccia di gestione del nodo sulla rete di gestione. |  
 
 
 | Subnet mask dell'indirizzo IPv4 |  
