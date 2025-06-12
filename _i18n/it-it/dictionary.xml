@@ -2164,4 +2164,5 @@
   <block id="cc2976705cd90914f7093a509084c243" category="paragraph">Quando si lavora con più istanze di vCenter Server, aggiornare il certificato autofirmato a un certificato firmato da un'autorità di certificazione (CA).</block>
   <block id="15f0aef685a07d8a64ee213328fd4abf" category="list-text">Determinare gli strumenti ONTAP per il tipo di distribuzione VMware vSphere dalla prima VM del nodo.</block>
   <block id="843e69439f5c77bf5c54644b48190fc1" category="admonition">Per gli strumenti ONTAP per la distribuzione VMware vSphere HA, è necessario modificare la password utente della console di manutenzione sul primo nodo, ovvero node1.</block>
+  <block id="56564ecb20e9cb45429b432b22f216f4" category="admonition">Le impostazioni MPIO non si applicano ai protocolli NVMe, NVMe/FC e NVMe/TCP.</block>
 </blocks>

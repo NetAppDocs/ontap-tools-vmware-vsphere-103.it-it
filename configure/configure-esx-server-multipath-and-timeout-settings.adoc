@@ -67,6 +67,9 @@ Le impostazioni MPIO definiscono i percorsi preferiti per i sistemi storage NetA
 Negli ambienti a performance elevate o quando si eseguono test delle performance con un singolo datastore LUN, prendere in considerazione la possibilità di modificare l'impostazione del bilanciamento del carico della policy di selezione del percorso psp (round-robin) VMW_PSP_RR (Path Selection Policy) dall'impostazione IOPS predefinita di 1000 a un valore di 1.
 
 
+NOTE: Le impostazioni MPIO non si applicano ai protocolli NVMe, NVMe/FC e NVMe/TCP.
+
+
 
 === Impostazioni NFS
 
