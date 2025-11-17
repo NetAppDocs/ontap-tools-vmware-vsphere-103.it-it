@@ -2026,7 +2026,6 @@
   <block id="cd457aeee08a9f6476660a1f15284160" category="paragraph">Dopo aver aggiunto il disco rigido, aggiornare le risorse della VM per le rispettive configurazioni e riavviare la VM primaria.</block>
   <block id="82c4bde04ac809c6d15f232949e072ce" category="paragraph">Verrà creato un nuovo disco rigido. Il provisioner dinamico dello storage utilizza questo HDD per generare o replicare i volumi.</block>
   <block id="b06f0e274f6c746f0d30521b5c7f392e" category="list-text">Carica gli strumenti ONTAP per l'aggiornamento ISO di VMware vSphere nella libreria di contenuti.</block>
-  <block id="dd5382558ec4a47dfbc203fb25698772" category="list-text">Nella pagina principale della macchina virtuale, selezionare *azioni* &gt; *Modifica impostazioni*</block>
   <block id="ef9e53e40d78d57abe78283a3603eb4e" category="list-text">Selezionare il file ISO della libreria di contenuti nella finestra di modifica delle impostazioni nel campo *unità CD/DVD*.</block>
   <block id="54a029420d74c0dff69239155cf510b5" category="inline-image-macro">Modificare le impostazioni</block>
   <block id="2c2d3019834934bb25449edddc396321" category="list-text">Selezionare il file ISO e selezionare *OK*. Selezionare la casella di controllo connesso nel campo *unità CD/DVD*. <block ref="af57a506b85774ef3a9f849e2b26e258" category="inline-image-macro-rx" type="image"></block></block>
@@ -2268,4 +2267,7 @@
   <block id="d416ef8edb2844634dbe8cfff2e77f9a" category="sidebar">Comprendere igroup e le policy di esportazione</block>
   <block id="019227f341a3522deb6e80d962611b44" category="sidebar">Esegui la migrazione dei tool ONTAP per VMware vSphere dalla 9.xx alla 10,3</block>
   <block id="d619f73b597358ef5140938f37254d97" category="sidebar">Migrare agli strumenti ONTAP più recenti per VMware vSphere</block>
+  <block id="a928a1b805644ea87a643f7f8d60a477" category="list-text">Nella pagina della VM primaria, seleziona *Azioni* &gt; *Modifica impostazioni*. Per identificare il nome della VM primaria:</block>
+  <block id="75a86edd37c9b2122be450b28fa09149" category="list-text">Abilita la shell diag su qualsiasi nodo</block>
+  <block id="e016d50ae26af4214e6a864c1c2c8db5" category="list-text">Eseguire il seguente comando:<block ref="1ebe86b64a17c55ae52f4488cffae75f" prefix=" " category="inline-code"></block></block>
 </blocks>

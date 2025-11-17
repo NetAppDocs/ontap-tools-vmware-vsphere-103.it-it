@@ -128,7 +128,13 @@ Verrà creato un nuovo disco rigido. Il provisioner dinamico dello storage utili
 
 .Fasi
 . Carica gli strumenti ONTAP per l'aggiornamento ISO di VMware vSphere nella libreria di contenuti.
-. Nella pagina principale della macchina virtuale, selezionare *azioni* > *Modifica impostazioni*
+. Nella pagina della VM primaria, seleziona *Azioni* > *Modifica impostazioni*. Per identificare il nome della VM primaria:
++
+.. Abilita la shell diag su qualsiasi nodo
+.. Eseguire il seguente comando:
+`grep sourceHost /opt/netapp/meta/ansible_vars.yaml`
+
+
 . Selezionare il file ISO della libreria di contenuti nella finestra di modifica delle impostazioni nel campo *unità CD/DVD*.
 . Selezionare il file ISO e selezionare *OK*. Selezionare la casella di controllo connesso nel campo *unità CD/DVD*. image:../media/primaryvm-edit-settings.png["Modificare le impostazioni"]
 . Da vCenter Server, aprire una console agli strumenti ONTAP.
