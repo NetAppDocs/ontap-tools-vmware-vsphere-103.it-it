@@ -37,7 +37,7 @@ Se non disponi di una libreria di contenuti, segui questi passaggi per crearne u
 
 
 
-NOTE: Per ulteriori informazioni, consulta il https://blogs.vmware.com/vsphere/2020/01/creating-and-using-content-library.html["Creazione e utilizzo della libreria di contenuti"] blog.
+NOTE: Per ulteriori informazioni, consultare https://blogs.vmware.com/vsphere/2020/01/creating-and-using-content-library.html["Creazione e utilizzo della libreria di contenuti"^] blog.
 
 
 NOTE: Prima di procedere con la distribuzione, impostare il DRS (Distributed Resource Scheduler) del cluster sull'inventario su 'Conservative'. In questo modo, le VM non vengono migrate durante l'installazione.

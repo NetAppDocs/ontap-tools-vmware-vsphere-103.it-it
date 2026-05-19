@@ -17,7 +17,7 @@ Nella sezione seguente vengono descritti i concetti e i termini principali utili
 
 === Sistemi ASA r2
 
-I nuovi sistemi NetApp ASA R2 forniscono una soluzione hardware e software unificata che crea un'esperienza semplificata specifica delle esigenze dei clienti SAN. https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html["Informazioni sui sistemi di storage ASA R2"].
+I nuovi sistemi NetApp ASA r2 offrono una soluzione hardware e software unificata che crea un'esperienza semplificata specifica per le esigenze dei clienti SAN-only. https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html["Informazioni sui sistemi di storage ASA R2"^].
 
 
 
@@ -29,7 +29,7 @@ CA è un'entità attendibile che emette certificati SSL (Secure Sockets Layer).
 
 === Gruppo di coerenza
 
-Un gruppo di coerenza è un insieme di volumi gestiti come singola unità. In ONTAP, i gruppi di coerenza offrono una gestione semplice e una garanzia di protezione per un carico di lavoro applicativo che copre più volumi. Ulteriori informazioni su https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["gruppo di coerenza"].
+Un gruppo di coerenza è una raccolta di volumi gestiti come un'unica unità. In ONTAP, i gruppi di coerenza offrono una gestione semplificata e una garanzia di protezione per un carico di lavoro applicativo distribuito su più volumi. Scopri di più https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["gruppo di coerenza"^].
 
 
 
@@ -77,7 +77,7 @@ Il valore di RPO misura la frequenza di esecuzione del backup o della replica de
 
 === SnapMirror Active Sync (SMAS)
 
-SnapMirror Active Sync consente ai servizi di business di continuare a funzionare anche in caso di guasto completo del sito, supportando le applicazioni per il failover in modo trasparente con una copia secondaria. Per attivare un failover con la sincronizzazione attiva di SnapMirror sono necessari un intervento manuale e script personalizzato. Ulteriori informazioni su https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["Sincronizzazione attiva di SnapMirror"].
+SnapMirror active sync consente ai servizi aziendali di continuare a funzionare anche in caso di guasto completo del sito, supportando il failover trasparente delle applicazioni utilizzando una copia secondaria. Non sono necessari interventi manuali né script personalizzati per attivare un failover con SnapMirror active sync. Scopri di più https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["Sincronizzazione attiva di SnapMirror"^].
 
 
 
@@ -149,7 +149,7 @@ VAAI è un set di API che consente la comunicazione tra gli host di VMware vSphe
 
 === VSphere Metro Storage Cluster
 
-VSphere Metro Storage Cluster (vMSC) è una tecnologia che consente e supporta vSphere in un'implementazione cluster estesa. Le soluzioni vMSC sono supportate con la sincronizzazione attiva di NetApp MetroCluster e SnapMirror (in precedenza SMBC). Queste soluzioni forniscono una migliore business continuity in caso di errore del dominio. Il modello di resilienza si basa sulle tue scelte specifiche di configurazione. Ulteriori informazioni su https://core.vmware.com/resource/vmware-vsphere-metro-storage-cluster-vmsc["Cluster di storage VMware vSphere Metro"].
+vSphere Metro Storage Cluster (vMSC) è una tecnologia che abilita e supporta vSphere in una distribuzione di cluster esteso. Le soluzioni vMSC sono supportate con NetApp MetroCluster e SnapMirror active sync (precedentemente SMBC). Queste soluzioni offrono una maggiore continuità operativa in caso di errore del dominio. Il modello di resilienza si basa sulle specifiche scelte di configurazione. Scopri di più su  https://core.vmware.com/resource/vmware-vsphere-metro-storage-cluster-vmsc["Cluster di storage VMware vSphere Metro"^].
 
 
 

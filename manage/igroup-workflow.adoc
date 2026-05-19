@@ -220,7 +220,7 @@ Durante la migrazione:
 Ciò garantisce il rispetto del modello gerarchico.
 
 .Argomenti correlati
-https://docs.netapp.com/us-en/ontap/san-admin/igroups-concept.html["A proposito di igroups"]
+https://docs.netapp.com/us-en/ontap/san-admin/igroups-concept.html["A proposito di igroups"^]
 
 
 
@@ -237,4 +237,4 @@ Quando si elimina o si smonta un datastore NFS da un host ESXi, gli strumenti ON
 L'assegnazione della policy di esportazione varia a seconda che venga riutilizzata su datastore diversi. Quando si riutilizza la policy di esportazione, è possibile aggiungerla con il nuovo indirizzo IP host. Quando si elimina o si smonta un datastore che utilizza una policy di esportazione condivisa, la policy non verrà eliminata. Rimane invariata e l'indirizzo IP host non viene rimosso, poiché è condivisa con gli altri datastore. Il riutilizzo delle policy di esportazione è sconsigliato, in quanto può causare problemi di accesso e latenza.
 
 .Argomenti correlati
-https://docs.netapp.com/us-en/ontap/nfs-config/create-export-policy-task.html["Creare una policy di esportazione"]
+https://docs.netapp.com/us-en/ontap/nfs-config/create-export-policy-task.html["Creare una policy di esportazione"^]

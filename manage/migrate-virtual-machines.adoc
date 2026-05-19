@@ -50,7 +50,7 @@ Attualmente VMware non supporta le macchine virtuali clonate su un modello VM.
 
 È supportato il clone di una macchina virtuale protetta.
 
-Per ulteriori dettagli, fare riferimento https://docs.vmware.com/en/VMware-Horizon/2103/virtual-desktops/GUID-B5020738-8649-4308-A8B0-70AF80527DF6.html["Creazione di una macchina virtuale per la clonazione"] a.
+Consultare https://docs.vmware.com/en/VMware-Horizon/2103/virtual-desktops/GUID-B5020738-8649-4308-A8B0-70AF80527DF6.html["Creazione di una macchina virtuale per la clonazione"^] per ulteriori dettagli.
 
 
 
